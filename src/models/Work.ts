@@ -1,7 +1,7 @@
-import Image from './Image';
-import Tags from './Tags';
+import { Image } from  './Image';
+import { Tags } from  './Tags';
 
-export default class Work {
+export class Work {
   title: String;
   url: String;
   date: String;

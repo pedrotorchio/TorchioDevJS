@@ -1,6 +1,6 @@
-import Tags from './Tags';
+import { Tags } from  './Tags';
 
-export default class Skill {
+export class Skill {
   title: String;
   text: String;
   tags: Tags;

@@ -1,7 +1,7 @@
-import Tags from './Tags';
+import { Tags } from  './Tags';
 import ExperienceEntry from './ExperienceEntry';
 
-export default class Experience {
+export class Experience {
   title: String;
   tags: Tags;
   entries: [ExperienceEntry];

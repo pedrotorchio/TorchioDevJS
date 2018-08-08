@@ -1,6 +1,6 @@
-import Tags from './Tags';
+import { Tags } from  './Tags';
 
-export default class Service {
+export class Service {
   title: String;
   header: String;
   text: String;

@@ -1,4 +1,4 @@
-export default class Language {
+export class Language {
   title: String;
   display: String;
 }

@@ -1,3 +1,3 @@
-export default class Tags{
+export class Tags{
   collection: [String];
 }

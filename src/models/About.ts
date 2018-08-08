@@ -1,7 +1,7 @@
-import Image from './Image';
-import Tags from './Tags';
+import { Image } from  './Image';
+import { Tags } from  './Tags';
 
-export default class About {
+export class About {
   avatar_image: Image;
   cover_letter: String;
   description: String;

@@ -1,5 +1,5 @@
-import Image from './Image';
-export default class Education {
+import { Image } from  './Image';
+export class Education {
   title: String;
   logo: Image;
   text: String;
