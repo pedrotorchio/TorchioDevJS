@@ -1,5 +1,5 @@
 import { Tags } from  './Tags';
-import ExperienceEntry from './ExperienceEntry';
+import { ExperienceEntry } from './ExperienceEntry';
 
 export class Experience {
   title: String;
