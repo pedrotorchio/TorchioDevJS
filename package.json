@@ -1,25 +1,27 @@
 {
-  "name": "torchiodev-api",
+  "name": "jsapi-torchiodev.com",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pedrotorchio/torchiodev.com-jsapi.git"
+    "url": "git+https://github.com/pedrotorchio/jsapi-torchiodev.com.git"
   },
   "keywords": [
-    "JS",
-    "API",
-    "Personal",
-    "Website"
+    "api",
+    "js",
+    "personal",
+    "website"
   ],
   "author": "Pedro Torchio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pedrotorchio/torchiodev.com-jsapi/issues"
+    "url": "https://github.com/pedrotorchio/jsapi-torchiodev.com/issues"
   },
-  "homepage": "https://github.com/pedrotorchio/torchiodev.com-jsapi#readme"
+  "homepage": "https://github.com/pedrotorchio/jsapi-torchiodev.com#readme"
 }
