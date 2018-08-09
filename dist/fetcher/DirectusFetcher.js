@@ -24,6 +24,9 @@ class DirectusFetcher {
             if (info.main_image) {
                 app.main_image = this.data2image(info.main_image.data);
             }
+            if (info.logo) {
+                app.logo = this.data2image(info.logo.data);
+            }
             app.title = info.main_title;
             app.contact_email = info.email_address;
             return app;
