@@ -19,5 +19,5 @@ export interface IApi{
   getSkills(): Promise<Skill[]>;
   getEducations(): Promise<Education[]>;
   getLanguages(): Promise<Language[]>;
-  getSocial(): Promise<Social[]>;
+  getSocials(): Promise<Social[]>;
 }

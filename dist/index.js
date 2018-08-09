@@ -36,13 +36,31 @@ const Api_1 = require("./Api");
 let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com')
     .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
 let api = new Api_1.Api(fetcher);
+// api
+//    .getAppInfo()
+//    .then(data => console.dir(data));
+// api
+//    .getAbout()
+//    .then(data => console.dir(data));
+// api
+//    .getWorks()
+//    .then(data => console.dir(data));
+// api
+//    .getServices()
+//    .then(data => console.dir(data));
+// api
+//    .getExperiences()
+//    .then(data => console.dir(data));
+// api
+//    .getSkills()
+//    .then(data => console.dir(data));
+// api
+//    .getEducations()
+//    .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
+// api
+//    .getLanguages()
+//    .then(data => console.log(data));
 api
-    .getAppInfo()
-    .then(data => console.dir(data));
-api
-    .getAbout()
-    .then(data => console.dir(data));
-api
-    .getWorks()
-    .then(data => console.dir(data));
+    .getSocials()
+    .then(data => console.log(data));
 //# sourceMappingURL=index.js.map
