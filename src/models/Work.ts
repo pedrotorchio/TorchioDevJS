@@ -1,12 +1,15 @@
 import { Image } from  './Image';
-import { Tags } from  './Tags';
+import { Model } from './Model';
 
-export class Work {
+export class Work  extends Model {
   title: string;
   url: string;
   date: string;
   info: string;
   thumbnail: Image;
   color: string;
-  tags: Tags;
+
+  constructor(id:number|string) {
+    super(id);
+  }
 }
