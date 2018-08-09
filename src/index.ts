@@ -30,11 +30,11 @@ export * from './Api';
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
 
-// import {DirectusFetcher} from './fetcher/DirectusFetcher';
-// import {Api} from './Api';
+import {DirectusFetcher} from './fetcher/DirectusFetcher';
+import {Api} from './Api';
 
-// let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
-// let api = new Api(fetcher )
-//    .getAbout()
-//    .then(appinfo => console.dir(appinfo));
+let fetcher = new DirectusFetcher('http://api.torchiodev.com')
+   .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+let api = new Api(fetcher )
+   .getWorks()
+   .then(appinfo => console.dir(appinfo));
