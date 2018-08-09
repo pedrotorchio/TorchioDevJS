@@ -31,11 +31,18 @@ __export(require("./Api"));
  *    .getAppInfo()
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
-// import {DirectusFetcher} from './fetcher/DirectusFetcher';
-// import {Api} from './Api';
-// let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
-// let api = new Api(fetcher )
-//    .getAbout()
-//    .then(appinfo => console.dir(appinfo));
+const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");
+const Api_1 = require("./Api");
+let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com')
+    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
+let api = new Api_1.Api(fetcher);
+api
+    .getAppInfo()
+    .then(data => console.dir(data));
+api
+    .getAbout()
+    .then(data => console.dir(data));
+api
+    .getWorks()
+    .then(data => console.dir(data));
 //# sourceMappingURL=index.js.map
