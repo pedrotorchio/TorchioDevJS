@@ -1,3 +1,3 @@
 export class Tags{
-  collection: [string];
+  constructor(public collection: string[] = []) {}
 }
