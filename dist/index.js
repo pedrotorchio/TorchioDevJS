@@ -54,4 +54,7 @@ let api = new Api_1.Api(fetcher);
 // api
 //    .getSkills()
 //    .then(data => console.dir(data));
+api
+    .getEducations()
+    .then(data => data.forEach(ed => console.log(ed.logo.srcset)));
 //# sourceMappingURL=index.js.map

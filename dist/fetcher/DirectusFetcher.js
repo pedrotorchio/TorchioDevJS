@@ -125,7 +125,24 @@ class DirectusFetcher {
         });
     }
     getEducations() {
-        return null;
+        return this.axios.get('/education/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let educations;
+            educations = array.map(data => {
+                let education = new index_1.Education(data.id);
+                education.tags = new index_1.Tags(data.tags);
+                education.sort = data.sort;
+                education.title = data.title;
+                education.text = data.text;
+                if (data.logo) {
+                    education.logo = this.data2image(data.logo.data);
+                }
+                return education;
+            });
+            educations = educations.sort((a, b) => a.sort - b.sort);
+            return educations;
+        });
     }
     getLanguages() {
         return null;

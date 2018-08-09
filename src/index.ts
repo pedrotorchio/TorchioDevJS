@@ -54,3 +54,6 @@ let api = new Api(fetcher );
 // api
 //    .getSkills()
 //    .then(data => console.dir(data));
+api
+   .getEducations()
+   .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
