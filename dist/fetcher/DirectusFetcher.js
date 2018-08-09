@@ -20,7 +20,7 @@ class DirectusFetcher {
             .then(response => response.data.data)
             .then(data => data[0])
             .then(info => {
-            let app = new index_1.AppInfo();
+            let app = new index_1.AppInfo(info.id);
             if (info.main_image) {
                 app.main_image = this.data2image(info.main_image.data);
             }
@@ -37,7 +37,7 @@ class DirectusFetcher {
             .then(response => response.data.data)
             .then(data => data[0])
             .then(info => {
-            let app = new index_1.About();
+            let app = new index_1.About(info.id);
             if (info.avatar_image) {
                 app.avatar_image = this.data2image(info.avatar_image.data);
             }
@@ -48,7 +48,27 @@ class DirectusFetcher {
         });
     }
     getWorks() {
-        return null;
+        return this.axios.get('/work/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let works;
+            works = array.map(data => {
+                let work = new index_1.Work(data.id);
+                if (data.thumbnail) {
+                    work.thumbnail = this.data2image(data.thumbnail.data);
+                }
+                work.title = data.title;
+                work.url = data.url;
+                work.date = data.date;
+                work.info = data.info;
+                work.color = data.suitable_color;
+                work.tags = new index_1.Tags(data.tags);
+                work.sort = data.sort;
+                return work;
+            });
+            works = works.sort((a, b) => a.sort - b.sort);
+            return works;
+        });
     }
     getServices() {
         return null;
@@ -69,10 +89,10 @@ class DirectusFetcher {
         return null;
     }
     data2image(data) {
-        let main_image = new index_1.Image();
+        let main_image = new index_1.Image(data.id);
         main_image.title = data.title;
         main_image.name = data.name;
-        main_image.caption = data.caption;
+        main_image.description = data.caption;
         main_image.width = data.width;
         main_image.height = data.height;
         main_image.main_url = joiner(this.baseUrl, data.url);

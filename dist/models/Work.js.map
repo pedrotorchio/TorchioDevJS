@@ -1,1 +1,1 @@
-{"version":3,"file":"Work.js","sourceRoot":"","sources":["../../src/models/Work.ts"],"names":[],"mappings":";;AAGA,MAAa,IAAI;CAQhB;AARD,oBAQC"}
+{"version":3,"file":"Work.js","sourceRoot":"","sources":["../../src/models/Work.ts"],"names":[],"mappings":";;AACA,mCAAgC;AAEhC,MAAa,IAAM,SAAQ,aAAK;IAQ9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AAXD,oBAWC"}
