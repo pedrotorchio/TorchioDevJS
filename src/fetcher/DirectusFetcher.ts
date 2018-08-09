@@ -217,8 +217,28 @@ export class DirectusFetcher implements IFetcher{
     
   }
   getLanguages(): Promise<Language[]> {
-    return null;
     
+    return this.axios.get('/language/rows')
+        .then(response => response.data.data)
+        .then(array => {
+          let languages: Language[];
+          
+          languages = array.map( data => {
+            
+            let language = new Language(data.id);
+            
+            language.tags = new Tags(data.tags);
+            language.sort = data.sort;
+            language.title = data.title;
+            language.display = data.display_title;
+
+            return language;
+          });
+          languages = languages.sort( (a, b) => a.sort - b.sort );
+          
+          return languages;
+        
+        });
   }
   getSocial(): Promise<Social[]> {
     return null;

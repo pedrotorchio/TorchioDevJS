@@ -57,4 +57,7 @@ let api = new Api_1.Api(fetcher);
 // api
 //    .getEducations()
 //    .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
+// api
+//    .getLanguages()
+//    .then(data => console.log(data));
 //# sourceMappingURL=index.js.map

@@ -57,3 +57,6 @@ let api = new Api(fetcher );
 // api
 //    .getEducations()
 //    .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
+// api
+//    .getLanguages()
+//    .then(data => console.log(data));

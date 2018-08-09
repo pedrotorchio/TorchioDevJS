@@ -145,7 +145,21 @@ class DirectusFetcher {
         });
     }
     getLanguages() {
-        return null;
+        return this.axios.get('/language/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let languages;
+            languages = array.map(data => {
+                let language = new index_1.Language(data.id);
+                language.tags = new index_1.Tags(data.tags);
+                language.sort = data.sort;
+                language.title = data.title;
+                language.display = data.display_title;
+                return language;
+            });
+            languages = languages.sort((a, b) => a.sort - b.sort);
+            return languages;
+        });
     }
     getSocial() {
         return null;
