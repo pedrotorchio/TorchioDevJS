@@ -10,7 +10,7 @@ import {
   Language, 
   Social } from './index';
 export interface IApi{
-  getAppInfo(): AppInfo;
+  getAppInfo(): Promise<AppInfo>;
   getAbout(): About;
   getWorks(): [Work];
   getServices(): [Service];

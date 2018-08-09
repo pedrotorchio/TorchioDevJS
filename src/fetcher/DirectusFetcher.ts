@@ -24,10 +24,13 @@ export class DirectusFetcher implements IApi{
     });
   }
 
-  getAppInfo(): AppInfo {
+  async getAppInfo(): Promise<AppInfo> {
     
+    const { data: [info] } = await this.axios.get();
     
-    return null;
+
+    return new AppInfo();
+
   }
   getAbout(): About {
     return null;
