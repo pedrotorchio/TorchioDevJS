@@ -51,7 +51,7 @@ let api = new Api_1.Api(fetcher);
 // api
 //    .getExperiences()
 //    .then(data => console.dir(data));
-api
-    .getSkills()
-    .then(data => console.dir(data));
+// api
+//    .getSkills()
+//    .then(data => console.dir(data));
 //# sourceMappingURL=index.js.map
