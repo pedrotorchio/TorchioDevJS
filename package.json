@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/bundle.js",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "url-join": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^10.5.7",

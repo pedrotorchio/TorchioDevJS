@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
+const joiner = require('url-join'); // preventing untyped module errors
 const index_1 = require("../index");
 class DirectusFetcher {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
+        this.apiUrl = '/api/1.1/tables';
         this.axios = axios_1.default.create({
-            baseURL: baseUrl
+            baseURL: joiner(baseUrl, this.apiUrl)
         });
     }
     setAuthorizationHeader(token) {

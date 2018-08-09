@@ -13,7 +13,7 @@ export * from './models/Social';
 
 
 import { DirectusFetcher } from './fetcher/DirectusFetcher';
-new DirectusFetcher('http://api.torchiodev.com/api/1.1/tables')
+new DirectusFetcher('http://api.torchiodev.com')
 .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
 .getAppInfo();
 

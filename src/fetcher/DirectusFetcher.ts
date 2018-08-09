@@ -1,4 +1,6 @@
 import axios from 'axios';
+const joiner: any = require('url-join'); // preventing untyped module errors
+
 import { IApi } from '../IApi';
 import { 
   AppInfo,
@@ -14,15 +16,18 @@ import {
   Tags
  } from '../index';
 
+
 export class DirectusFetcher implements IApi{
   
   private axios;
+  private apiUrl: string = '/api/1.1/tables';
 
   constructor(private baseUrl: string) {
     this.axios = axios.create({
-      baseURL: baseUrl
+      baseURL: joiner(baseUrl, this.apiUrl)
     });
   }
+
   setAuthorizationHeader(token:string): IApi {
     this.axios.defaults.headers.common['Authorization'] = token;
     return this;
@@ -34,7 +39,7 @@ export class DirectusFetcher implements IApi{
         .then(response => response.data.data)
         .then(data => data[0])
         .then(info => {
-          
+
           let app = new AppInfo();
           
           if (info.main_image) {
