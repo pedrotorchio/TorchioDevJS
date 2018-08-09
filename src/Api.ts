@@ -15,7 +15,7 @@ export class Api implements IApi{
   getAppInfo(): Promise<AppInfo> {
     return this.fetcher.getAppInfo();
   }
-  getAbout(): About {
+  getAbout(): Promise<About> {
     return this.fetcher.getAbout();
   }
   getWorks(): Work[] {
