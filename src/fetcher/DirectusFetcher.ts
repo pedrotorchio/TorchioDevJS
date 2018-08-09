@@ -36,8 +36,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getAppInfo(): Promise<AppInfo> {
     
-    return this.axios.get('/general/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/general/rows')        
         .then(data => data[0])
         .then(info => {
 
@@ -60,8 +59,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getAbout(): Promise<About> {
     
-    return this.axios.get('/about/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/about/rows')        
         .then(data => data[0])
         .then(info => {
 
@@ -81,8 +79,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getWorks(): Promise<Work[]> {
     
-    return this.axios.get('/work/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/work/rows')        
         .then(array => {
           let works: Work[];
           
@@ -112,8 +109,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getServices(): Promise<Service[]> {
     
-    return this.axios.get('/service/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/service/rows')        
         .then(array => {
           let services: Service[];
           
@@ -137,8 +133,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getExperiences(): Promise<Experience[]> {
 
-    return this.axios.get('/experience/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/experience/rows')        
         .then(array => {
           
           let experiences: Experience[];
@@ -164,8 +159,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getSkills(): Promise<Skill[]> {
     
-    return this.axios.get('/skill/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/skill/rows')        
         .then(array => {
           let skills: Skill[];
           
@@ -190,8 +184,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getEducations(): Promise<Education[]> {
     
-    return this.axios.get('/education/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/education/rows')        
         .then(array => {
           let educations: Education[];
           
@@ -219,8 +212,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getLanguages(): Promise<Language[]> {
     
-    return this.axios.get('/language/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/language/rows')        
         .then(array => {
           let languages: Language[];
           
@@ -243,8 +235,7 @@ export class DirectusFetcher implements IFetcher{
   }
   getSocials(): Promise<Social[]> {
     
-    return this.axios.get('/social/rows')
-        .then(response => response.data.data)
+    return this.axios.get('/social/rows')        
         .then(array => {
           let socials: Social[];
           
