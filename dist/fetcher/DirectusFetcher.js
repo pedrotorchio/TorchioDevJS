@@ -10,6 +10,7 @@ class DirectusFetcher {
         this.axios = axios_1.default.create({
             baseURL: joiner(baseUrl, this.apiUrl)
         });
+        this.axios.interceptors.response.use(response => response.data.data);
     }
     setAuthorizationHeader(token) {
         this.axios.defaults.headers.common['Authorization'] = token;

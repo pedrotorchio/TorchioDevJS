@@ -27,6 +27,7 @@ export class DirectusFetcher implements IFetcher{
     this.axios = axios.create({
       baseURL: joiner(baseUrl, this.apiUrl)
     });
+    this.axios.interceptors.response.use(response => response.data.data);
   }
 
   setAuthorizationHeader(token:string): IFetcher {
