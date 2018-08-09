@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Skill = /** @class */ (function () {
-    function Skill() {
-    }
-    return Skill;
-}());
+class Skill {
+}
 exports.Skill = Skill;
 //# sourceMappingURL=Skill.js.map

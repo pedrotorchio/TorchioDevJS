@@ -12,7 +12,7 @@ import {
 export class Api implements IApi{
   constructor(private fetcher: IApi) {}
 
-  getAppInfo(): AppInfo {
+  getAppInfo(): Promise<AppInfo> {
     return this.fetcher.getAppInfo();
   }
   getAbout(): About {

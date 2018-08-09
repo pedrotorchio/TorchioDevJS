@@ -26,11 +26,25 @@ export class DirectusFetcher implements IApi{
 
   async getAppInfo(): Promise<AppInfo> {
     
-    const { data: [info] } = await this.axios.get();
     
+    return this.axios.get('/general/rows')
+        .then(response => console.log(response))
+        .then(data => console.log(data))
+        .then(info => {
+          console.dir(info);
+          let app = new AppInfo();
+          let { image } = info.main_image.data;
+          
+          let main_image = new Image();
+              main_image.main_url = image.url;
 
-    return new AppInfo();
+          app.title = info.main_title;
+          app.contact_email = info.email_address;
+          app.main_image = main_image;
 
+          console.dir(app);
+        })
+    
   }
   getAbout(): About {
     return null;

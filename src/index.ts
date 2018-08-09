@@ -12,5 +12,7 @@ export * from './models/Education';
 export * from './models/Social';
 
 
-
+import { DirectusFetcher } from './fetcher/DirectusFetcher';
+new DirectusFetcher('http://api.torchiodev.com/api/1.1/tables')
+.getAppInfo();
 

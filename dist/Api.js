@@ -1,37 +1,36 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Api = /** @class */ (function () {
-    function Api(fetcher) {
+class Api {
+    constructor(fetcher) {
         this.fetcher = fetcher;
     }
-    Api.prototype.getAppInfo = function () {
+    getAppInfo() {
         return this.fetcher.getAppInfo();
-    };
-    Api.prototype.getAbout = function () {
+    }
+    getAbout() {
         return this.fetcher.getAbout();
-    };
-    Api.prototype.getWorks = function () {
+    }
+    getWorks() {
         return this.fetcher.getWorks();
-    };
-    Api.prototype.getServices = function () {
+    }
+    getServices() {
         return this.fetcher.getServices();
-    };
-    Api.prototype.getExperiences = function () {
+    }
+    getExperiences() {
         return this.fetcher.getExperiences();
-    };
-    Api.prototype.getSkills = function () {
+    }
+    getSkills() {
         return this.fetcher.getSkills();
-    };
-    Api.prototype.getEducations = function () {
+    }
+    getEducations() {
         return this.fetcher.getEducations();
-    };
-    Api.prototype.getLanguages = function () {
+    }
+    getLanguages() {
         return this.fetcher.getLanguages();
-    };
-    Api.prototype.getSocial = function () {
+    }
+    getSocial() {
         return this.fetcher.getSocial();
-    };
-    return Api;
-}());
+    }
+}
 exports.Api = Api;
 //# sourceMappingURL=Api.js.map

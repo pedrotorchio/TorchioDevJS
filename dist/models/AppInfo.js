@@ -1,9 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var AppInfo = /** @class */ (function () {
-    function AppInfo() {
-    }
-    return AppInfo;
-}());
+class AppInfo {
+}
 exports.AppInfo = AppInfo;
 //# sourceMappingURL=AppInfo.js.map
