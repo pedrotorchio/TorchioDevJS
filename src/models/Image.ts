@@ -1,14 +1,14 @@
 import { Tags } from './Tags';
 
 export class Image {
-  title: string;
-  name: string;
-  caption: string;
-  tags: Tags;
-  main_url:string;
-  width: number;
-  height: number;
-  srcset: {url:string, size:number}[];
+  title: string = '';
+  name: string = '';
+  caption: string = '';
+  tags: Tags = new Tags();
+  main_url:string = '';
+  width: number = 0;
+  height: number = 0;
+  srcset: {url:string, size:number}[] = [];
 
   addSource(url:string, size:number):Image {
 
