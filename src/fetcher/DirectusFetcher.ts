@@ -1,7 +1,7 @@
 import axios from 'axios';
 const joiner: any = require('url-join'); // preventing untyped module errors
 
-import { IApi } from '../IApi';
+import { IFetcher } from '../IFetcher';
 import { 
   AppInfo,
   About, 
@@ -17,7 +17,7 @@ import {
  } from '../index';
 
 
-export class DirectusFetcher implements IApi{
+export class DirectusFetcher implements IFetcher{
   
   private axios;
   private apiUrl: string = '/api/1.1/tables';
@@ -28,7 +28,7 @@ export class DirectusFetcher implements IApi{
     });
   }
 
-  setAuthorizationHeader(token:string): IApi {
+  setAuthorizationHeader(token:string): IFetcher {
     this.axios.defaults.headers.common['Authorization'] = token;
     return this;
   }
@@ -91,11 +91,11 @@ export class DirectusFetcher implements IApi{
         main_image.caption = data.caption;
         main_image.width = data.width;
         main_image.height = data.height;
-        main_image.main_url = data.url;
+        main_image.main_url = joiner(this.baseUrl, data.url);
         main_image.tags = new Tags(data.tags);
-  
-        [100, 320, 640, 1080].forEach(size => main_image.addSource(
-          `${this.baseUrl}/thumbnail/${size}/${size}/${data.name}`,
+
+        [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource(
+          joiner(this.baseUrl,'thumbnail', `${size}/${size}/contain`, data.name),
           size
         ));
         
