@@ -10,6 +10,7 @@ class DirectusFetcher {
         this.axios = axios_1.default.create({
             baseURL: joiner(baseUrl, this.apiUrl)
         });
+        this.axios.interceptors.response.use(response => response.data.data);
     }
     setAuthorizationHeader(token) {
         this.axios.defaults.headers.common['Authorization'] = token;
@@ -17,7 +18,6 @@ class DirectusFetcher {
     }
     getAppInfo() {
         return this.axios.get('/general/rows')
-            .then(response => response.data.data)
             .then(data => data[0])
             .then(info => {
             let app = new index_1.AppInfo(info.id);
@@ -34,7 +34,6 @@ class DirectusFetcher {
     }
     getAbout() {
         return this.axios.get('/about/rows')
-            .then(response => response.data.data)
             .then(data => data[0])
             .then(info => {
             let app = new index_1.About(info.id);
@@ -49,7 +48,6 @@ class DirectusFetcher {
     }
     getWorks() {
         return this.axios.get('/work/rows')
-            .then(response => response.data.data)
             .then(array => {
             let works;
             works = array.map(data => {
@@ -72,7 +70,6 @@ class DirectusFetcher {
     }
     getServices() {
         return this.axios.get('/service/rows')
-            .then(response => response.data.data)
             .then(array => {
             let services;
             services = array.map(data => {
@@ -90,7 +87,6 @@ class DirectusFetcher {
     }
     getExperiences() {
         return this.axios.get('/experience/rows')
-            .then(response => response.data.data)
             .then(array => {
             let experiences;
             experiences = array.map(data => {
@@ -108,7 +104,6 @@ class DirectusFetcher {
     }
     getSkills() {
         return this.axios.get('/skill/rows')
-            .then(response => response.data.data)
             .then(array => {
             let skills;
             skills = array.map(data => {
@@ -126,7 +121,6 @@ class DirectusFetcher {
     }
     getEducations() {
         return this.axios.get('/education/rows')
-            .then(response => response.data.data)
             .then(array => {
             let educations;
             educations = array.map(data => {
@@ -146,7 +140,6 @@ class DirectusFetcher {
     }
     getLanguages() {
         return this.axios.get('/language/rows')
-            .then(response => response.data.data)
             .then(array => {
             let languages;
             languages = array.map(data => {
@@ -163,7 +156,6 @@ class DirectusFetcher {
     }
     getSocials() {
         return this.axios.get('/social/rows')
-            .then(response => response.data.data)
             .then(array => {
             let socials;
             socials = array.map(data => {
