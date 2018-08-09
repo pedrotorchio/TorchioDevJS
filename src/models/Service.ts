@@ -1,8 +1,12 @@
 import { Tags } from  './Tags';
+import { Model } from './Model';
 
-export class Service {
+export class Service extends Model {
   title: string;
   header: string;
   text: string;
-  tags: Tags;
+
+  constructor(id:number|string) {
+    super(id);
+  }
 }

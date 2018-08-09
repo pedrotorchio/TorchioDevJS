@@ -1,9 +1,11 @@
 import { Image } from  './Image';
-import { Tags } from  './Tags';
+import { Model } from './Model';
 
-export class About {
+export class About extends Model {
   avatar_image: Image;
   cover_letter: string;
-  description: string;
-  tags: Tags;
+
+  constructor(id:number|string) {
+    super(id);
+  }
 }

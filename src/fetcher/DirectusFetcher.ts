@@ -39,7 +39,7 @@ export class DirectusFetcher implements IFetcher{
         .then(data => data[0])
         .then(info => {
 
-          let app = new AppInfo();
+          let app = new AppInfo(info.id);
             
           if (info.main_image) {
             app.main_image = this.data2image(info.main_image.data);
@@ -63,7 +63,7 @@ export class DirectusFetcher implements IFetcher{
         .then(data => data[0])
         .then(info => {
 
-          let app = new About();
+          let app = new About(info.id);
             
           if (info.avatar_image) {
             app.avatar_image = this.data2image(info.avatar_image.data);
@@ -86,7 +86,7 @@ export class DirectusFetcher implements IFetcher{
           
           works = array.map( data => {
             
-            let work = new Work();
+            let work = new Work(data.id);
             
             if (data.thumbnail) {
               work.thumbnail = this.data2image(data.thumbnail.data);
@@ -134,10 +134,10 @@ export class DirectusFetcher implements IFetcher{
   data2image(data):Image {
   
       
-    let main_image = new Image();
+    let main_image = new Image(data.id);
         main_image.title = data.title;
         main_image.name = data.name;
-        main_image.caption = data.caption;
+        main_image.description = data.caption;
         main_image.width = data.width;
         main_image.height = data.height;
         main_image.main_url = joiner(this.baseUrl, data.url);
