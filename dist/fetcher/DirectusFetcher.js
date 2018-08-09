@@ -71,7 +71,22 @@ class DirectusFetcher {
         });
     }
     getServices() {
-        return null;
+        return this.axios.get('/service/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let services;
+            services = array.map(data => {
+                let service = new index_1.Service(data.id);
+                service.title = data.title;
+                service.header = data.bubble_header;
+                service.text = data.bubble_text;
+                service.tags = new index_1.Tags(data.tags);
+                service.sort = data.sort;
+                return service;
+            });
+            services = services.sort((a, b) => a.sort - b.sort);
+            return services;
+        });
     }
     getExperiences() {
         return null;

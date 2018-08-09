@@ -109,7 +109,29 @@ export class DirectusFetcher implements IFetcher{
         });
   }
   getServices(): Promise<Service[]> {
-    return null;
+    
+    return this.axios.get('/service/rows')
+        .then(response => response.data.data)
+        .then(array => {
+          let services: Service[];
+          
+          services = array.map( data => {
+            
+            let service = new Service(data.id);
+            
+            service.title = data.title;
+            service.header = data.bubble_header;
+            service.text = data.bubble_text;
+            service.tags = new Tags(data.tags);
+            service.sort = data.sort;
+
+            return service;
+          });
+          services = services.sort( (a, b) => a.sort - b.sort );
+          
+          return services;
+        
+        });
   }
   getExperiences(): Promise<Experience[]> {
     return null;
