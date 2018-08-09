@@ -56,7 +56,7 @@ export class DirectusFetcher implements IFetcher{
         });
     
   }
-  getAbout(): About {
+  getAbout(): Promise<About> {
     return null;
   }
   getWorks(): Work[] {

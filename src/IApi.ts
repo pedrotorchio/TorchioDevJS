@@ -12,7 +12,7 @@ import {
 export interface IApi{
   
   getAppInfo(): Promise<AppInfo>;
-  getAbout(): About;
+  getAbout(): Promise<About>;
   getWorks(): Work[];
   getServices(): Service[];
   getExperiences(): Experience[];
