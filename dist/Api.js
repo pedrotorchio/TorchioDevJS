@@ -4,6 +4,9 @@ class Api {
     constructor(fetcher) {
         this.fetcher = fetcher;
     }
+    setAuthorizationHeader(token) {
+        return this.fetcher.setAuthorizationHeader(token);
+    }
     getAppInfo() {
         return this.fetcher.getAppInfo();
     }

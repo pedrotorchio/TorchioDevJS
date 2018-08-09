@@ -23,8 +23,9 @@ export class DirectusFetcher implements IApi{
       baseURL: baseUrl
     });
   }
-  setAuthorizationHeader(token:string) {
+  setAuthorizationHeader(token:string): IApi {
     this.axios.defaults.headers.common['Authorization'] = token;
+    return this;
   }
   getAppInfo(): Promise<AppInfo> {
     

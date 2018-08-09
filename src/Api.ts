@@ -12,6 +12,9 @@ import {
 export class Api implements IApi{
   constructor(private fetcher: IApi) {}
 
+  setAuthorizationHeader(token:string): IApi {
+    return this.fetcher.setAuthorizationHeader(token);
+  }
   getAppInfo(): Promise<AppInfo> {
     return this.fetcher.getAppInfo();
   }

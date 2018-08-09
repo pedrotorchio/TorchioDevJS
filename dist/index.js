@@ -17,5 +17,6 @@ __export(require("./models/Education"));
 __export(require("./models/Social"));
 const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");
 new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com/api/1.1/tables')
+    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
     .getAppInfo();
 //# sourceMappingURL=index.js.map

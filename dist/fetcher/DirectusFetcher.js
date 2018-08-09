@@ -11,6 +11,7 @@ class DirectusFetcher {
     }
     setAuthorizationHeader(token) {
         this.axios.defaults.headers.common['Authorization'] = token;
+        return this;
     }
     getAppInfo() {
         return this.axios.get('/general/rows')
