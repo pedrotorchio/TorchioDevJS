@@ -8,6 +8,7 @@ import {
   Work, 
   Service, 
   Experience, 
+  ExperienceEntry,
   Skill, 
   Education, 
   Language, 
@@ -134,7 +135,30 @@ export class DirectusFetcher implements IFetcher{
         });
   }
   getExperiences(): Promise<Experience[]> {
-    return null;
+
+    return this.axios.get('/experience/rows')
+        .then(response => response.data.data)
+        .then(array => {
+          
+          let experiences: Experience[];
+          
+          experiences = array.map( data => {
+          
+            let experience = new Experience(data.id);
+            
+            experience.title = data.title;
+            experience.tags = new Tags(data.tags);
+            experience.sort = data.sort;
+
+            experience.entries = data.entries.data.map( entry => this.data2entry(entry) );
+
+            return experience;
+          });
+          experiences = experiences.sort( (a, b) => a.sort - b.sort );
+          
+          return experiences;
+        
+        });
   }
   getSkills(): Promise<Skill[]> {
     return null;
@@ -173,6 +197,17 @@ export class DirectusFetcher implements IFetcher{
         
   
     return main_image;
+  }
+  data2entry(data):ExperienceEntry {
+
+
+    let entry = new ExperienceEntry(data.id);
+        entry.text = data.text
+        entry.date_range = data.date_range;
+        entry.location = data.location;
+        entry.sort = data.sort;
+
+    return entry;
   }
 }
 

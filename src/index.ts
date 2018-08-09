@@ -36,12 +36,18 @@ import {Api} from './Api';
 let fetcher = new DirectusFetcher('http://api.torchiodev.com')
    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
 let api = new Api(fetcher );
-api
-   .getAppInfo()
-   .then(data => console.dir(data));
-api
-   .getAbout()
-   .then(data => console.dir(data));
-api
-   .getWorks()
-   .then(data => console.dir(data));
+// api
+//    .getAppInfo()
+//    .then(data => console.dir(data));
+// api
+//    .getAbout()
+//    .then(data => console.dir(data));
+// api
+//    .getWorks()
+//    .then(data => console.dir(data));
+// api
+//    .getServices()
+//    .then(data => console.dir(data));
+// api
+//    .getExperiences()
+//    .then(data => console.dir(data));

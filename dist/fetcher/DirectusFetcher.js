@@ -89,7 +89,21 @@ class DirectusFetcher {
         });
     }
     getExperiences() {
-        return null;
+        return this.axios.get('/experience/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let experiences;
+            experiences = array.map(data => {
+                let experience = new index_1.Experience(data.id);
+                experience.title = data.title;
+                experience.tags = new index_1.Tags(data.tags);
+                experience.sort = data.sort;
+                experience.entries = data.entries.data.map(entry => this.data2entry(entry));
+                return experience;
+            });
+            experiences = experiences.sort((a, b) => a.sort - b.sort);
+            return experiences;
+        });
     }
     getSkills() {
         return null;
@@ -114,6 +128,14 @@ class DirectusFetcher {
         main_image.tags = new index_1.Tags(data.tags);
         [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource(joiner(this.baseUrl, 'thumbnail', `${size}/${size}/contain`, data.name), size));
         return main_image;
+    }
+    data2entry(data) {
+        let entry = new index_1.ExperienceEntry(data.id);
+        entry.text = data.text;
+        entry.date_range = data.date_range;
+        entry.location = data.location;
+        entry.sort = data.sort;
+        return entry;
     }
 }
 exports.DirectusFetcher = DirectusFetcher;
