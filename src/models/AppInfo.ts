@@ -1,7 +1,7 @@
 import { Image } from  './Image';
 
 export class AppInfo {
-  title: String;
-  contact_email: String;
+  title: string;
+  contact_email: string;
   main_image: Image;
 }

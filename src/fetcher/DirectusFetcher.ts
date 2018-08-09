@@ -14,11 +14,18 @@ import {
   Tags
  } from '../index';
 
-export class DirectusFetcher {
-  constructor(private baseUrl: String) {}
+export class DirectusFetcher implements IApi{
+  
+  private axios;
+
+  constructor(private baseUrl: string) {
+    this.axios = axios.create({
+      baseURL: baseUrl
+    });
+  }
 
   getAppInfo(): AppInfo {
-    axios.get();
+    
     
     return null;
   }

@@ -1,6 +1,6 @@
 import { Image } from  './Image';
 export class Education {
-  title: String;
+  title: string;
   logo: Image;
-  text: String;
+  text: string;
 }

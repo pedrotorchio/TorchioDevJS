@@ -1,5 +1,5 @@
 export class ExperienceEntry {
-  text: String;
-  date_range: String;
-  location: String;
+  text: string;
+  date_range: string;
+  location: string;
 }

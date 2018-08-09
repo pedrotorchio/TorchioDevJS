@@ -1,8 +1,8 @@
 import { Tags } from  './Tags';
 
 export class Service {
-  title: String;
-  header: String;
-  text: String;
+  title: string;
+  header: string;
+  text: string;
   tags: Tags;
 }

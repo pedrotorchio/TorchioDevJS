@@ -1,7 +1,7 @@
 import { Tags } from  './Tags';
 
 export class Skill {
-  title: String;
-  text: String;
+  title: string;
+  text: string;
   tags: Tags;
 }

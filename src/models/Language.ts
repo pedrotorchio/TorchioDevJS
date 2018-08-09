@@ -1,4 +1,4 @@
 export class Language {
-  title: String;
-  display: String;
+  title: string;
+  display: string;
 }

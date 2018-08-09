@@ -1,3 +1,3 @@
 export class Tags{
-  collection: [String];
+  collection: [string];
 }

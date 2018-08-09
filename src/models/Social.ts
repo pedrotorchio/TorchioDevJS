@@ -1,4 +1,4 @@
 export class Social {
-  title: String;
-  display: String;
+  title: string;
+  display: string;
 }

@@ -2,11 +2,11 @@ import { Image } from  './Image';
 import { Tags } from  './Tags';
 
 export class Work {
-  title: String;
-  url: String;
-  date: String;
-  info: String;
+  title: string;
+  url: string;
+  date: string;
+  info: string;
   thumbnail: Image;
-  color: String;
+  color: string;
   tags: Tags;
 }
