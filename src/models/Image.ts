@@ -8,5 +8,12 @@ export class Image {
   main_url:string;
   width: number;
   height: number;
-  srcset: {url, size}[];
+  srcset: {url:string, size:number}[];
+
+  addSource(url:string, size:number):Image {
+
+    this.srcset.push({url, size});
+    
+    return this;
+  }
 }
