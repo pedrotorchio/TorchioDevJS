@@ -1,1 +1,1 @@
-{"version":3,"file":"Education.js","sourceRoot":"","sources":["../../src/models/Education.ts"],"names":[],"mappings":";;AACA,MAAa,SAAS;CAIrB;AAJD,8BAIC"}
+{"version":3,"file":"Education.js","sourceRoot":"","sources":["../../src/models/Education.ts"],"names":[],"mappings":";;AACA,mCAAgC;AAEhC,MAAa,SAAU,SAAQ,aAAK;IAKlC,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,8BAQC"}

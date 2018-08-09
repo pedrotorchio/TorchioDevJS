@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Tags_1 = require("./Tags");
-class Image {
-    constructor() {
+const Model_1 = require("./Model");
+class Image extends Model_1.Model {
+    constructor(id) {
+        super(id);
         this.title = '';
         this.name = '';
-        this.caption = '';
-        this.tags = new Tags_1.Tags();
         this.main_url = '';
         this.width = 0;
         this.height = 0;

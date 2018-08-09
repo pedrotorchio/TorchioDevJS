@@ -18,25 +18,25 @@ export class Api implements IApi{
   getAbout(): Promise<About> {
     return this.fetcher.getAbout();
   }
-  getWorks(): Work[] {
+  getWorks(): Promise<Work[]> {
     return this.fetcher.getWorks();
   }
-  getServices(): Service[] {
+  getServices(): Promise<Service[]> {
     return this.fetcher.getServices();
   }
-  getExperiences(): Experience[] {
+  getExperiences(): Promise<Experience[]> {
     return this.fetcher.getExperiences();
   }
-  getSkills(): Skill[] {
+  getSkills(): Promise<Skill[]> {
     return this.fetcher.getSkills();
   }
-  getEducations(): Education[] {
+  getEducations(): Promise<Education[]> {
     return this.fetcher.getEducations();
   }
-  getLanguages(): Language[] {
+  getLanguages(): Promise<Language[]> {
     return this.fetcher.getLanguages();
   }
-  getSocial(): Social[] {
-    return this.fetcher.getSocial();
+  getSocials(): Promise<Social[]> {
+    return this.fetcher.getSocials();
   }
 }

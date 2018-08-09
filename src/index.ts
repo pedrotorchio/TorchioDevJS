@@ -30,11 +30,36 @@ export * from './Api';
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
 
-// import {DirectusFetcher} from './fetcher/DirectusFetcher';
-// import {Api} from './Api';
+import {DirectusFetcher} from './fetcher/DirectusFetcher';
+import {Api} from './Api';
 
-// let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
-// let api = new Api(fetcher )
+let fetcher = new DirectusFetcher('http://api.torchiodev.com')
+   .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+let api = new Api(fetcher );
+// api
 //    .getAppInfo()
-//    .then(appinfo => console.dir(appinfo));
+//    .then(data => console.dir(data));
+// api
+//    .getAbout()
+//    .then(data => console.dir(data));
+// api
+//    .getWorks()
+//    .then(data => console.dir(data));
+// api
+//    .getServices()
+//    .then(data => console.dir(data));
+// api
+//    .getExperiences()
+//    .then(data => console.dir(data));
+// api
+//    .getSkills()
+//    .then(data => console.dir(data));
+// api
+//    .getEducations()
+//    .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
+// api
+//    .getLanguages()
+//    .then(data => console.log(data));
+api
+   .getSocials()
+   .then(data => console.log(data));

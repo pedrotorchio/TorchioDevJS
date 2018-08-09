@@ -1,8 +1,11 @@
-import { Tags } from  './Tags';
 import { ExperienceEntry } from './ExperienceEntry';
+import { Model } from './Model';
 
-export class Experience {
+export class Experience extends Model {
   title: string;
-  tags: Tags;
   entries: ExperienceEntry[];
+
+  constructor(id:number|string) {
+    super(id);
+  }
 }

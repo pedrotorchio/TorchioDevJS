@@ -1,1 +1,1 @@
-{"version":3,"file":"Skill.js","sourceRoot":"","sources":["../../src/models/Skill.ts"],"names":[],"mappings":";;AAEA,MAAa,KAAK;CAIjB;AAJD,sBAIC"}
+{"version":3,"file":"Skill.js","sourceRoot":"","sources":["../../src/models/Skill.ts"],"names":[],"mappings":";;AAAA,mCAAgC;AAEhC,MAAa,KAAM,SAAQ,aAAK;IAK9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,sBAQC"}

@@ -1,7 +1,11 @@
-import { Tags } from  './Tags';
+import { Model } from './Model';
 
-export class Skill {
+export class Skill extends Model {
   title: string;
   text: string;
-  tags: Tags;
+  level: number;
+
+  constructor(id:string|number) {
+    super(id);
+  }
 }
