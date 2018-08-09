@@ -57,7 +57,25 @@ export class DirectusFetcher implements IFetcher{
     
   }
   getAbout(): Promise<About> {
-    return null;
+    
+    return this.axios.get('/about/rows')
+        .then(response => response.data.data)
+        .then(data => data[0])
+        .then(info => {
+
+          let app = new About();
+            
+          if (info.avatar_image) {
+            app.avatar_image = this.data2image(info.avatar_image.data);
+          }
+          
+          app.tags = new Tags(info.tags);
+          app.cover_letter = info.main_title;
+          app.description = info.email_address;
+          
+          return app;
+        
+        });
   }
   getWorks(): Work[] {
     return null;

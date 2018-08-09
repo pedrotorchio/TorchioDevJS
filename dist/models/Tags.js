@@ -1,8 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Tags {
-    constructor(collection = []) {
-        this.collection = collection;
+    constructor(data = []) {
+        this.collection = [];
+        if (typeof data === 'string') {
+            data = data.split(',');
+        }
+        this.collection = data;
     }
 }
 exports.Tags = Tags;
