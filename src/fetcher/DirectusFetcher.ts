@@ -108,24 +108,24 @@ export class DirectusFetcher implements IFetcher{
         
         });
   }
-  getServices(): Service[] {
+  getServices(): Promise<Service[]> {
     return null;
   }
-  getExperiences(): Experience[] {
+  getExperiences(): Promise<Experience[]> {
     return null;
   }
-  getSkills(): Skill[] {
+  getSkills(): Promise<Skill[]> {
     return null;
   }
-  getEducations(): Education[] {
-    return null;
-    
-  }
-  getLanguages(): Language[] {
+  getEducations(): Promise<Education[]> {
     return null;
     
   }
-  getSocial(): Social[] {
+  getLanguages(): Promise<Language[]> {
+    return null;
+    
+  }
+  getSocial(): Promise<Social[]> {
     return null;
     
   }

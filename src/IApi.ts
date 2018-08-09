@@ -14,10 +14,10 @@ export interface IApi{
   getAppInfo(): Promise<AppInfo>;
   getAbout(): Promise<About>;
   getWorks(): Promise<Work[]>;
-  getServices(): Service[];
-  getExperiences(): Experience[];
-  getSkills(): Skill[];
-  getEducations(): Education[];
-  getLanguages(): Language[];
-  getSocial(): Social[];
+  getServices(): Promise<Service[]>;
+  getExperiences(): Promise<Experience[]>;
+  getSkills(): Promise<Skill[]>;
+  getEducations(): Promise<Education[]>;
+  getLanguages(): Promise<Language[]>;
+  getSocial(): Promise<Social[]>;
 }
