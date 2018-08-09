@@ -23,24 +23,30 @@ export class DirectusFetcher implements IApi{
       baseURL: baseUrl
     });
   }
-
-  async getAppInfo(): Promise<AppInfo> {
+  setAuthorizationHeader(token:string) {
+    this.axios.defaults.headers.common['Authorization'] = token;
+  }
+  getAppInfo(): Promise<AppInfo> {
     
     
     return this.axios.get('/general/rows')
-        .then(response => console.log(response))
-        .then(data => console.log(data))
+        .then(response => response.data.data)
+        .then(data => data[0])
         .then(info => {
-          console.dir(info);
-          let app = new AppInfo();
-          let { image } = info.main_image.data;
-          
-          let main_image = new Image();
-              main_image.main_url = image.url;
 
+          let app = new AppInfo();
+          
+          if (info.main_image) {
+            let { image } = info.main_image.data;
+            
+            let main_image = new Image();
+                main_image.main_url = image.url;
+
+            app.main_image = main_image;
+          }
+          
           app.title = info.main_title;
           app.contact_email = info.email_address;
-          app.main_image = main_image;
 
           console.dir(app);
         })

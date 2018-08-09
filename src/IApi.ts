@@ -10,6 +10,7 @@ import {
   Language, 
   Social } from './index';
 export interface IApi{
+  setAuthorizationHeader(token:string);
   getAppInfo(): Promise<AppInfo>;
   getAbout(): About;
   getWorks(): [Work];
