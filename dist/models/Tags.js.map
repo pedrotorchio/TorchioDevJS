@@ -1,1 +1,1 @@
-{"version":3,"file":"Tags.js","sourceRoot":"","sources":["../../src/models/Tags.ts"],"names":[],"mappings":";;AAAA,MAAa,IAAI;CAEhB;AAFD,oBAEC"}
+{"version":3,"file":"Tags.js","sourceRoot":"","sources":["../../src/models/Tags.ts"],"names":[],"mappings":";;AAAA,MAAa,IAAI;IACf,YAAmB,aAAuB,EAAE;QAAzB,eAAU,GAAV,UAAU,CAAe;IAAG,CAAC;CACjD;AAFD,oBAEC"}

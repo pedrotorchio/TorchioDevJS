@@ -22,10 +22,7 @@ class DirectusFetcher {
             .then(info => {
             let app = new index_1.AppInfo();
             if (info.main_image) {
-                let image = info.main_image.data;
-                let main_image = new index_1.Image();
-                main_image.main_url = image.url;
-                app.main_image = main_image;
+                app.main_image = this.data2image(info.main_image.data);
             }
             app.title = info.main_title;
             app.contact_email = info.email_address;
@@ -55,6 +52,18 @@ class DirectusFetcher {
     }
     getSocial() {
         return null;
+    }
+    data2image(data) {
+        let main_image = new index_1.Image();
+        main_image.title = data.title;
+        main_image.name = data.name;
+        main_image.caption = data.caption;
+        main_image.width = data.width;
+        main_image.height = data.height;
+        main_image.main_url = joiner(this.baseUrl, data.url);
+        main_image.tags = new index_1.Tags(data.tags);
+        [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource(joiner(this.baseUrl, 'thumbnail', `${size}/${size}/contain`, data.name), size));
+        return main_image;
     }
 }
 exports.DirectusFetcher = DirectusFetcher;
