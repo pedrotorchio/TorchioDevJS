@@ -20,7 +20,7 @@ class DirectusFetcher {
             .then(info => {
             let app = new index_1.AppInfo();
             if (info.main_image) {
-                let { image } = info.main_image.data;
+                let image = info.main_image.data;
                 let main_image = new index_1.Image();
                 main_image.main_url = image.url;
                 app.main_image = main_image;

@@ -34,11 +34,11 @@ export class DirectusFetcher implements IApi{
         .then(response => response.data.data)
         .then(data => data[0])
         .then(info => {
-
+          
           let app = new AppInfo();
           
           if (info.main_image) {
-            let { image } = info.main_image.data;
+            let image = info.main_image.data;
             
             let main_image = new Image();
                 main_image.main_url = image.url;
