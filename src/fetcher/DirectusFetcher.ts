@@ -40,16 +40,11 @@ export class DirectusFetcher implements IApi{
         .then(info => {
 
           let app = new AppInfo();
-          
-          if (info.main_image) {
-            let image = info.main_image.data;
             
-            let main_image = new Image();
-                main_image.main_url = image.url;
-
-            app.main_image = main_image;
+          if (info.main_image) {
+            app.main_image = this.data2image(info.main_image.data);
           }
-          
+                
           app.title = info.main_title;
           app.contact_email = info.email_address;
 
@@ -61,28 +56,53 @@ export class DirectusFetcher implements IApi{
   getAbout(): About {
     return null;
   }
-  getWorks(): [Work] {
+  getWorks(): Work[] {
     return null;
   }
-  getServices(): [Service] {
+  getServices(): Service[] {
     return null;
   }
-  getExperiences(): [Experience] {
+  getExperiences(): Experience[] {
     return null;
   }
-  getSkills(): [Skill] {
+  getSkills(): Skill[] {
     return null;
   }
-  getEducations(): [Education] {
+  getEducations(): Education[] {
     return null;
     
   }
-  getLanguages(): [Language] {
+  getLanguages(): Language[] {
     return null;
     
   }
-  getSocial(): [Social] {
+  getSocial(): Social[] {
     return null;
     
+  }
+
+
+  data2image(data):Image {
+  
+      
+    let main_image = new Image();
+        main_image.title = data.title;
+        main_image.name = data.name;
+        main_image.caption = data.caption;
+        main_image.width = data.width;
+        main_image.height = data.height;
+        main_image.main_url = data.url;
+        main_image.tags = new Tags(data.tags);
+  
+        [100, 320, 640, 1080].forEach(size => main_image.addSource(
+          `${this.baseUrl}/thumbnail/${size}/${size}/${data.name}`,
+          size
+        ));
+        
+        
+  
+    return main_image;
   }
 }
+
+
