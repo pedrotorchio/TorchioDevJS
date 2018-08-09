@@ -70,8 +70,8 @@ export class DirectusFetcher implements IFetcher{
           }
           
           app.tags = new Tags(info.tags);
-          app.cover_letter = info.main_title;
-          app.description = info.email_address;
+          app.cover_letter = info.bio;
+          app.description = info.description;
           
           return app;
         

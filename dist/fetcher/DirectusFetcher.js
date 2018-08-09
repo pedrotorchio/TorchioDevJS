@@ -42,8 +42,8 @@ class DirectusFetcher {
                 app.avatar_image = this.data2image(info.avatar_image.data);
             }
             app.tags = new index_1.Tags(info.tags);
-            app.cover_letter = info.main_title;
-            app.description = info.email_address;
+            app.cover_letter = info.bio;
+            app.description = info.description;
             return app;
         });
     }

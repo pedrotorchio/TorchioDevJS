@@ -36,5 +36,5 @@ export * from './Api';
 // let fetcher = new DirectusFetcher('http://api.torchiodev.com')
 //    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
 // let api = new Api(fetcher )
-//    .getAppInfo()
+//    .getAbout()
 //    .then(appinfo => console.dir(appinfo));
