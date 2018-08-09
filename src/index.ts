@@ -60,3 +60,6 @@ let api = new Api(fetcher );
 // api
 //    .getLanguages()
 //    .then(data => console.log(data));
+api
+   .getSocials()
+   .then(data => console.log(data));

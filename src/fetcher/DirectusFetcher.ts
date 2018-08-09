@@ -240,8 +240,32 @@ export class DirectusFetcher implements IFetcher{
         
         });
   }
-  getSocial(): Promise<Social[]> {
-    return null;
+  getSocials(): Promise<Social[]> {
+    
+    return this.axios.get('/social/rows')
+        .then(response => response.data.data)
+        .then(array => {
+          let socials: Social[];
+          
+          socials = array.map( data => {
+            
+            let social = new Social(data.id);
+            
+            social.tags = new Tags(data.tags);
+            social.url = data.url;
+            social.title = data.title;
+
+            if (data.icon) {
+              social.icon = this.data2image(data.icon.data);
+            }
+
+            return social;
+          });
+          socials = socials.sort( (a, b) => a.sort - b.sort );
+          
+          return socials;
+        
+        });
     
   }
 

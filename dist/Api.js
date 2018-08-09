@@ -28,8 +28,8 @@ class Api {
     getLanguages() {
         return this.fetcher.getLanguages();
     }
-    getSocial() {
-        return this.fetcher.getSocial();
+    getSocials() {
+        return this.fetcher.getSocials();
     }
 }
 exports.Api = Api;

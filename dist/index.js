@@ -60,4 +60,7 @@ let api = new Api_1.Api(fetcher);
 // api
 //    .getLanguages()
 //    .then(data => console.log(data));
+api
+    .getSocials()
+    .then(data => console.log(data));
 //# sourceMappingURL=index.js.map

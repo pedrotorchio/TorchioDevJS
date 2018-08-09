@@ -161,8 +161,24 @@ class DirectusFetcher {
             return languages;
         });
     }
-    getSocial() {
-        return null;
+    getSocials() {
+        return this.axios.get('/social/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let socials;
+            socials = array.map(data => {
+                let social = new index_1.Social(data.id);
+                social.tags = new index_1.Tags(data.tags);
+                social.url = data.url;
+                social.title = data.title;
+                if (data.icon) {
+                    social.icon = this.data2image(data.icon.data);
+                }
+                return social;
+            });
+            socials = socials.sort((a, b) => a.sort - b.sort);
+            return socials;
+        });
     }
     data2image(data) {
         let main_image = new index_1.Image(data.id);

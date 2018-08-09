@@ -36,7 +36,7 @@ export class Api implements IApi{
   getLanguages(): Promise<Language[]> {
     return this.fetcher.getLanguages();
   }
-  getSocial(): Promise<Social[]> {
-    return this.fetcher.getSocial();
+  getSocials(): Promise<Social[]> {
+    return this.fetcher.getSocials();
   }
 }
