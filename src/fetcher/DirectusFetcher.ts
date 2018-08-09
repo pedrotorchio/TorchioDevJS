@@ -34,7 +34,6 @@ export class DirectusFetcher implements IApi{
   }
   getAppInfo(): Promise<AppInfo> {
     
-    
     return this.axios.get('/general/rows')
         .then(response => response.data.data)
         .then(data => data[0])
@@ -54,8 +53,9 @@ export class DirectusFetcher implements IApi{
           app.title = info.main_title;
           app.contact_email = info.email_address;
 
-          console.dir(app);
-        })
+          return app;
+        
+        });
     
   }
   getAbout(): About {

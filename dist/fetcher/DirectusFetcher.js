@@ -29,7 +29,7 @@ class DirectusFetcher {
             }
             app.title = info.main_title;
             app.contact_email = info.email_address;
-            console.dir(app);
+            return app;
         });
     }
     getAbout() {
