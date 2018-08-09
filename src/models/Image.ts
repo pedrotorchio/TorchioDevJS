@@ -8,5 +8,5 @@ export class Image {
   main_url:string;
   width: number;
   height: number;
-  srcset: [{url, size}];
+  srcset: {url, size}[];
 }

@@ -13,11 +13,11 @@ export interface IApi{
   setAuthorizationHeader(token:string): IApi;
   getAppInfo(): Promise<AppInfo>;
   getAbout(): About;
-  getWorks(): [Work];
-  getServices(): [Service];
-  getExperiences(): [Experience];
-  getSkills(): [Skill];
-  getEducations(): [Education];
-  getLanguages(): [Language];
-  getSocial(): [Social];
+  getWorks(): Work[];
+  getServices(): Service[];
+  getExperiences(): Experience[];
+  getSkills(): Skill[];
+  getEducations(): Education[];
+  getLanguages(): Language[];
+  getSocial(): Social[];
 }
