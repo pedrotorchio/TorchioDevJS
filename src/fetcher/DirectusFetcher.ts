@@ -151,6 +151,7 @@ export class DirectusFetcher implements IFetcher{
             experience.sort = data.sort;
 
             experience.entries = data.entries.data.map( entry => this.data2entry(entry) );
+            experience.entries.sort( (a, b) => a.sort - b.sort );
 
             return experience;
           });
@@ -161,7 +162,30 @@ export class DirectusFetcher implements IFetcher{
         });
   }
   getSkills(): Promise<Skill[]> {
-    return null;
+    
+    return this.axios.get('/skill/rows')
+        .then(response => response.data.data)
+        .then(array => {
+          let skills: Skill[];
+          
+          skills = array.map( data => {
+            
+            let skill = new Skill(data.id);
+            
+            skill.tags = new Tags(data.tags);
+            skill.sort = data.sort;
+            skill.title = data.title;
+            skill.text = data.text;
+            skill.level = data.level;
+            
+
+            return skill;
+          });
+          skills = skills.sort( (a, b) => a.level - b.level );
+          
+          return skills;
+        
+        });
   }
   getEducations(): Promise<Education[]> {
     return null;

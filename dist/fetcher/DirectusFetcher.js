@@ -99,6 +99,7 @@ class DirectusFetcher {
                 experience.tags = new index_1.Tags(data.tags);
                 experience.sort = data.sort;
                 experience.entries = data.entries.data.map(entry => this.data2entry(entry));
+                experience.entries.sort((a, b) => a.sort - b.sort);
                 return experience;
             });
             experiences = experiences.sort((a, b) => a.sort - b.sort);
@@ -106,7 +107,22 @@ class DirectusFetcher {
         });
     }
     getSkills() {
-        return null;
+        return this.axios.get('/skill/rows')
+            .then(response => response.data.data)
+            .then(array => {
+            let skills;
+            skills = array.map(data => {
+                let skill = new index_1.Skill(data.id);
+                skill.tags = new index_1.Tags(data.tags);
+                skill.sort = data.sort;
+                skill.title = data.title;
+                skill.text = data.text;
+                skill.level = data.level;
+                return skill;
+            });
+            skills = skills.sort((a, b) => a.level - b.level);
+            return skills;
+        });
     }
     getEducations() {
         return null;

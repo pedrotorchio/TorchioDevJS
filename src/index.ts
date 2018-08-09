@@ -51,3 +51,6 @@ let api = new Api(fetcher );
 // api
 //    .getExperiences()
 //    .then(data => console.dir(data));
+api
+   .getSkills()
+   .then(data => console.dir(data));
