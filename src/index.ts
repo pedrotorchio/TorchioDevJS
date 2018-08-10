@@ -15,6 +15,27 @@ export * from './fetcher/DirectusFetcher';
 export * from './Api';
 
 
+import {DirectusFetcher} from './fetcher/DirectusFetcher';
+import {Api} from './Api';
+export const vuePlugin = {
+  install(Vue, options) {
+
+    options.propertyName = options.propertyName || 'api';
+
+    if (!options.apiUrl)
+      throw 'torchiodev api needs option apiUrl';
+    
+    let fetcher = new DirectusFetcher(options.apiUrl);
+    if (options.authentication)
+      fetcher.setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
+
+    let api = new Api(fetcher );
+    
+    Vue.prototype[`$${options.propertyName}`] = api;
+  }
+}
+
+
 /**
  * Procedure:
  * 1 import Api
