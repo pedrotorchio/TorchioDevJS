@@ -15,9 +15,23 @@
   tags: Tags = new Tags(); // meta tags
   description: string; // meta description
 ```
+#### Image
+```typescript
+
+  interface ISrcset = {url:string, size:[string, number]}
+
+  title: string = '';
+  name: string = '';
+  main_url:string = '';
+  width: number = 0;
+  height: number = 0;
+  srcset: ISrcset[] = []; // size: [label, value]
+
+  addSource(src:ISrcset):itself; // add new image source to srcset
+```
 
 #### AppInfo
-```
+```typescript
   title: string;
   contact_email: string;
   main_image: Image;
