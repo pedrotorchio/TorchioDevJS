@@ -11,8 +11,8 @@ class Image extends Model_1.Model {
         this.height = 0;
         this.srcset = [];
     }
-    addSource(url, size) {
-        this.srcset.push({ url, size });
+    addSource(src) {
+        this.srcset.push(src);
         return this;
     }
 }

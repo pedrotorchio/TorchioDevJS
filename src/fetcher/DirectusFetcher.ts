@@ -274,13 +274,11 @@ export class DirectusFetcher implements IFetcher{
         main_image.main_url = joiner(this.baseUrl, data.url);
         main_image.tags = new Tags(data.tags);
 
-        [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource(
-          joiner(this.baseUrl,'thumbnail', `${size}/${size}/contain`, data.name),
-          size
-        ));
+        [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource({
+          url: joiner(this.baseUrl, 'thumbnail', `${size}/${size}/contain`, data.name),
+          size: ['width', size]
+        }));
         
-        
-  
     return main_image;
   }
   data2entry(data):ExperienceEntry {
