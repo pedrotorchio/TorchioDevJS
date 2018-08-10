@@ -8,6 +8,22 @@
 #### Mirrorred Javascript generated in dist folder
 ###### package.main points to dist/index, exporting all files
 
+### Models properties
+#### Base
+```
+  sort: number = 0; // item order
+  tags: Tags = new Tags(); // meta tags
+  description: string; // meta description
+```
+
+#### AppInfo
+```
+  title: string;
+  contact_email: string;
+  main_image: Image;
+  logo: Image;
+```
+
 ### Vue plugin 
 1. import property 'vuePlugin' as torchioapi
 2. options baseUrl is required
