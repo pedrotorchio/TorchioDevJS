@@ -8,7 +8,11 @@
       "moduleResolution": "node",
       "lib": ["es2015"],
       "watch": true,
-      "noImplicitAny": false
+      "noImplicitAny": false,
+      "baseUrl": "src",
+      "paths": {
+        "@/*": ["*"]
+      }
   },
   "include": [
     "src/**/*"
