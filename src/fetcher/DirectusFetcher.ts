@@ -112,7 +112,7 @@ export class DirectusFetcher implements IFetcher {
       let works: Work[];
 
       works = array.map(([model, data]) => {
-        let work = model.copyInto(Work);
+        let work: Work = model.copyInto(Work);
         work.title = data.title;
         work.url = data.url;
         work.date = data.date;
@@ -133,7 +133,7 @@ export class DirectusFetcher implements IFetcher {
       let services: Service[];
 
       services = array.map(([model, data]) => {
-        let service = model.copyInto(Service);
+        let service: Service = model.copyInto(Service);
         service.title = data.title;
         service.header = data.bubble_header;
         service.text = data.bubble_text;
@@ -149,7 +149,7 @@ export class DirectusFetcher implements IFetcher {
       let experiences: Experience[];
 
       experiences = array.map(([model, data]) => {
-        let experience = model.copyInto(Experience);
+        let experience: Experience = model.copyInto(Experience);
 
         experience.title = data.title;
         experience.entries = data.entries.data.map(this.data2entry);
@@ -168,7 +168,7 @@ export class DirectusFetcher implements IFetcher {
       let skills: Skill[];
 
       skills = array.map(([model, data]) => {
-        let skill = model.copyInto(Skill);
+        let skill: Skill = model.copyInto(Skill);
         skill.title = data.title;
         skill.text = data.text;
         skill.level = data.level;
@@ -179,57 +179,40 @@ export class DirectusFetcher implements IFetcher {
       return skills;
     });
   }
-  // getEducations(): Promise<Education[]> {
+  getEducations(): Promise<Education[]> {
+    return this.axios.get("/education/rows").then(array => {
+      let educations: Education[];
 
-  //   return this.axios.get('/education/rows')
-  //       .then(array => {
-  //         let educations: Education[];
+      educations = array.map(([model, data]) => {
+        let education: Education = model.copyInto(Education);
+        education.title = data.title;
+        education.text = data.text;
 
-  //         educations = array.map( data => {
+        if (data.logo) {
+          education.logo = data2image(data.logo.data);
+        }
 
-  //           let education = new Education(data.id);
+        return education;
+      });
 
-  //           education.tags = new Tags(data.tags);
-  //           education.sort = data.sort;
-  //           education.title = data.title;
-  //           education.text = data.text;
+      return educations;
+    });
+  }
+  getLanguages(): Promise<Language[]> {
+    return this.axios.get("/language/rows").then(array => {
+      let languages: Language[];
 
-  //           if (data.logo) {
-  //             education.logo = data2model(data.logo.data);
-  //           }
+      languages = array.map(([model, data]) => {
+        let language: Language = model.copyInto(Language);
+        language.title = data.title;
+        language.display = data.display_title;
 
-  //           return education;
-  //         });
-  //         educations = educations.sort( (a, b) => a.sort - b.sort );
+        return language;
+      });
 
-  //         return educations;
-
-  //       });
-
-  // }
-  // getLanguages(): Promise<Language[]> {
-
-  //   return this.axios.get('/language/rows')
-  //       .then(array => {
-  //         let languages: Language[];
-
-  //         languages = array.map( data => {
-
-  //           let language = new Language(data.id);
-
-  //           language.tags = new Tags(data.tags);
-  //           language.sort = data.sort;
-  //           language.title = data.title;
-  //           language.display = data.display_title;
-
-  //           return language;
-  //         });
-  //         languages = languages.sort( (a, b) => a.sort - b.sort );
-
-  //         return languages;
-
-  //       });
-  // }
+      return languages;
+    });
+  }
   // getSocials(): Promise<Social[]> {
 
   //   return this.axios.get('/social/rows')

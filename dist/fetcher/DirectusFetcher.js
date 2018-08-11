@@ -120,41 +120,33 @@ class DirectusFetcher {
             return skills;
         });
     }
-    // getEducations(): Promise<Education[]> {
-    //   return this.axios.get('/education/rows')
-    //       .then(array => {
-    //         let educations: Education[];
-    //         educations = array.map( data => {
-    //           let education = new Education(data.id);
-    //           education.tags = new Tags(data.tags);
-    //           education.sort = data.sort;
-    //           education.title = data.title;
-    //           education.text = data.text;
-    //           if (data.logo) {
-    //             education.logo = data2model(data.logo.data);
-    //           }
-    //           return education;
-    //         });
-    //         educations = educations.sort( (a, b) => a.sort - b.sort );
-    //         return educations;
-    //       });
-    // }
-    // getLanguages(): Promise<Language[]> {
-    //   return this.axios.get('/language/rows')
-    //       .then(array => {
-    //         let languages: Language[];
-    //         languages = array.map( data => {
-    //           let language = new Language(data.id);
-    //           language.tags = new Tags(data.tags);
-    //           language.sort = data.sort;
-    //           language.title = data.title;
-    //           language.display = data.display_title;
-    //           return language;
-    //         });
-    //         languages = languages.sort( (a, b) => a.sort - b.sort );
-    //         return languages;
-    //       });
-    // }
+    getEducations() {
+        return this.axios.get("/education/rows").then(array => {
+            let educations;
+            educations = array.map(([model, data]) => {
+                let education = model.copyInto(index_1.Education);
+                education.title = data.title;
+                education.text = data.text;
+                if (data.logo) {
+                    education.logo = Procedures_1.data2image(data.logo.data);
+                }
+                return education;
+            });
+            return educations;
+        });
+    }
+    getLanguages() {
+        return this.axios.get("/language/rows").then(array => {
+            let languages;
+            languages = array.map(([model, data]) => {
+                let language = model.copyInto(index_1.Language);
+                language.title = data.title;
+                language.display = data.display_title;
+                return language;
+            });
+            return languages;
+        });
+    }
     // getSocials(): Promise<Social[]> {
     //   return this.axios.get('/social/rows')
     //       .then(array => {
