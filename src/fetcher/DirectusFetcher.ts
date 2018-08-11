@@ -51,18 +51,7 @@ export class DirectusFetcher implements IFetcher {
 
       if (sort !== undefined)
         preExtracted = preExtracted.sort(
-          (
-            [
-              {
-                meta: { sortA }
-              }
-            ],
-            [
-              {
-                meta: { sortB }
-              }
-            ]
-          ) => sortA - sortB
+          ([a], [b]) => <number>a.meta.sort - <number>b.meta.sort
         );
 
       return preExtracted;
@@ -154,7 +143,7 @@ export class DirectusFetcher implements IFetcher {
         experience.title = data.title;
         experience.entries = data.entries.data.map(this.data2entry);
         experience.entries.sort(
-          ({ meta: sortA }, { meta: sortB }) => sortA - sortB
+          (a, b) => <number>a.meta.sort - <number>b.meta.sort
         );
 
         return experience;
@@ -213,33 +202,25 @@ export class DirectusFetcher implements IFetcher {
       return languages;
     });
   }
-  // getSocials(): Promise<Social[]> {
+  getSocials(): Promise<Social[]> {
+    return this.axios.get("/social/rows").then(array => {
+      let socials: Social[];
 
-  //   return this.axios.get('/social/rows')
-  //       .then(array => {
-  //         let socials: Social[];
+      socials = array.map(([model, data]) => {
+        let social: Social = model.copyInto(Social);
+        social.url = data.url;
+        social.title = data.title;
 
-  //         socials = array.map( data => {
+        if (data.icon) {
+          social.icon = data2image(data.icon.data);
+        }
 
-  //           let social = new Social(data.id);
+        return social;
+      });
 
-  //           social.tags = new Tags(data.tags);
-  //           social.url = data.url;
-  //           social.title = data.title;
-
-  //           if (data.icon) {
-  //             social.icon = data2model(data.icon.data);
-  //           }
-
-  //           return social;
-  //         });
-  //         socials = socials.sort( (a, b) => a.sort - b.sort );
-
-  //         return socials;
-
-  //       });
-
-  // }
+      return socials;
+    });
+  }
 
   data2entry(data): ExperienceEntry {
     let entry: ExperienceEntry = data2model(data).copyInto(ExperienceEntry);

@@ -25,7 +25,7 @@ class DirectusFetcher {
             });
             const [{ meta: { sort } }] = preExtracted[0];
             if (sort !== undefined)
-                preExtracted = preExtracted.sort(([{ meta: { sortA } }], [{ meta: { sortB } }]) => sortA - sortB);
+                preExtracted = preExtracted.sort(([a], [b]) => a.meta.sort - b.meta.sort);
             return preExtracted;
         });
     }
@@ -101,7 +101,7 @@ class DirectusFetcher {
                 let experience = model.copyInto(index_1.Experience);
                 experience.title = data.title;
                 experience.entries = data.entries.data.map(this.data2entry);
-                experience.entries.sort(({ meta: sortA }, { meta: sortB }) => sortA - sortB);
+                experience.entries.sort((a, b) => a.meta.sort - b.meta.sort);
                 return experience;
             });
             return experiences;
@@ -147,24 +147,21 @@ class DirectusFetcher {
             return languages;
         });
     }
-    // getSocials(): Promise<Social[]> {
-    //   return this.axios.get('/social/rows')
-    //       .then(array => {
-    //         let socials: Social[];
-    //         socials = array.map( data => {
-    //           let social = new Social(data.id);
-    //           social.tags = new Tags(data.tags);
-    //           social.url = data.url;
-    //           social.title = data.title;
-    //           if (data.icon) {
-    //             social.icon = data2model(data.icon.data);
-    //           }
-    //           return social;
-    //         });
-    //         socials = socials.sort( (a, b) => a.sort - b.sort );
-    //         return socials;
-    //       });
-    // }
+    getSocials() {
+        return this.axios.get("/social/rows").then(array => {
+            let socials;
+            socials = array.map(([model, data]) => {
+                let social = model.copyInto(index_1.Social);
+                social.url = data.url;
+                social.title = data.title;
+                if (data.icon) {
+                    social.icon = Procedures_1.data2image(data.icon.data);
+                }
+                return social;
+            });
+            return socials;
+        });
+    }
     data2entry(data) {
         let entry = Procedures_1.data2model(data).copyInto(index_1.ExperienceEntry);
         entry.text = data.text;
