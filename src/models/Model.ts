@@ -9,7 +9,9 @@ export class Model{
 
   constructor(public id:number|string) {}
 
-  static copy <T extends Model>(model:Model, Type:new (id:number|string)=>T): T {
+  copy <T extends Model>(Type:new (id:number|string)=>T): T {
+    const model = this;
+    
     let copy = new Type(model.id);
     
     if (model.sort)
