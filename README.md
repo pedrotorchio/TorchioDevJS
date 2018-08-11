@@ -8,12 +8,32 @@
 #### Mirrorred Javascript generated in dist folder
 ###### package.main points to dist/index, exporting all files
 
-### Models properties
-#### Base
-```
-  sort: number = 0; // item order
-  tags: Tags = new Tags(); // meta tags
-  description: string; // meta description
+## Methods - fetch(__*ModelName*__)
+1. getAppInfo(): Promise<AppInfo>;
+2. getAbout(): Promise<About>;
+3. getWorks(): Promise<Work[]>;
+4. getServices(): Promise<Service[]>;
+5. getExperiences(): Promise<Experience[]>;
+6. getSkills(): Promise<Skill[]>;
+7. getEducations(): Promise<Education[]>;
+8. getLanguages(): Promise<Language[]>;
+9. getSocials(): Promise<Social[]>;
+
+### Models
+#### Model (base)
+```typescript
+  interface Metadata {
+    [key: string]: any;
+  }
+  meta:Metadata = {}
+  // stores any metadata, usually:
+  //  sort: number = 0; // item order
+  //  tags: Tags = new Tags(); // meta tags
+  //  synonyms: Tags = new Tags();
+  //  description: string; // meta description
+
+  // copies itself into a child instance
+  copyInto<T extends Model>(Type: new (id: number | string) => T): T;
 ```
 #### Image
 ```typescript
