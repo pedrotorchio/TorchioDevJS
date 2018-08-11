@@ -18,7 +18,7 @@ export * from './Api';
 
 import {DirectusFetcher} from './fetcher/DirectusFetcher';
 import {Api} from './Api';
-export const vuePlugin = {
+export const VuePlugin = {
   install(Vue, options) {
 
     options.propertyName = options.propertyName || 'api';
@@ -28,7 +28,7 @@ export const vuePlugin = {
     
     let fetcher = new DirectusFetcher(options.apiUrl);
     if (options.authentication)
-      fetcher.setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
+      fetcher.setAuthorizationHeader(options.authentication);
 
     let api = new Api(fetcher );
     
