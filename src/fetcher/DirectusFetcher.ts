@@ -144,32 +144,25 @@ export class DirectusFetcher implements IFetcher {
       return services;
     });
   }
-  // getExperiences(): Promise<Experience[]> {
+  getExperiences(): Promise<Experience[]> {
+    return this.axios.get("/experience/rows").then(array => {
+      let experiences: Experience[];
 
-  //   return this.axios.get('/experience/rows')
-  //       .then(array => {
+      experiences = array.map(([model, data]) => {
+        let experience = model.copyInto(Experience);
 
-  //         let experiences: Experience[];
+        experience.title = data.title;
+        experience.entries = data.entries.data.map(this.data2entry);
+        experience.entries.sort(
+          ({ meta: sortA }, { meta: sortB }) => sortA - sortB
+        );
 
-  //         experiences = array.map( data => {
+        return experience;
+      });
 
-  //           let experience = new Experience(data.id);
-
-  //           experience.title = data.title;
-  //           experience.tags = new Tags(data.tags);
-  //           experience.sort = data.sort;
-
-  //           experience.entries = data.entries.data.map( entry => this.data2entry(entry) );
-  //           experience.entries.sort( (a, b) => a.sort - b.sort );
-
-  //           return experience;
-  //         });
-  //         experiences = experiences.sort( (a, b) => a.sort - b.sort );
-
-  //         return experiences;
-
-  //       });
-  // }
+      return experiences;
+    });
+  }
   // getSkills(): Promise<Skill[]> {
 
   //   return this.axios.get('/skill/rows')
@@ -272,4 +265,13 @@ export class DirectusFetcher implements IFetcher {
   //       });
 
   // }
+
+  data2entry(data): ExperienceEntry {
+    let entry: ExperienceEntry = data2model(data).copyInto(ExperienceEntry);
+    entry.text = data.text;
+    entry.date_range = data.date_range;
+    entry.location = data.location;
+
+    return entry;
+  }
 }

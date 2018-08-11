@@ -94,6 +94,96 @@ class DirectusFetcher {
             return services;
         });
     }
+    getExperiences() {
+        return this.axios.get("/experience/rows").then(array => {
+            let experiences;
+            experiences = array.map(([model, data]) => {
+                let experience = model.copyInto(index_1.Experience);
+                experience.title = data.title;
+                experience.entries = data.entries.data.map(this.data2entry);
+                experience.entries.sort(({ meta: sortA }, { meta: sortB }) => sortA - sortB);
+                return experience;
+            });
+            return experiences;
+        });
+    }
+    // getSkills(): Promise<Skill[]> {
+    //   return this.axios.get('/skill/rows')
+    //       .then(array => {
+    //         let skills: Skill[];
+    //         skills = array.map( data => {
+    //           let skill = new Skill(data.id);
+    //           skill.tags = new Tags(data.tags);
+    //           skill.sort = data.sort;
+    //           skill.title = data.title;
+    //           skill.text = data.text;
+    //           skill.level = data.level;
+    //           return skill;
+    //         });
+    //         skills = skills.sort( (a, b) => a.level - b.level );
+    //         return skills;
+    //       });
+    // }
+    // getEducations(): Promise<Education[]> {
+    //   return this.axios.get('/education/rows')
+    //       .then(array => {
+    //         let educations: Education[];
+    //         educations = array.map( data => {
+    //           let education = new Education(data.id);
+    //           education.tags = new Tags(data.tags);
+    //           education.sort = data.sort;
+    //           education.title = data.title;
+    //           education.text = data.text;
+    //           if (data.logo) {
+    //             education.logo = data2model(data.logo.data);
+    //           }
+    //           return education;
+    //         });
+    //         educations = educations.sort( (a, b) => a.sort - b.sort );
+    //         return educations;
+    //       });
+    // }
+    // getLanguages(): Promise<Language[]> {
+    //   return this.axios.get('/language/rows')
+    //       .then(array => {
+    //         let languages: Language[];
+    //         languages = array.map( data => {
+    //           let language = new Language(data.id);
+    //           language.tags = new Tags(data.tags);
+    //           language.sort = data.sort;
+    //           language.title = data.title;
+    //           language.display = data.display_title;
+    //           return language;
+    //         });
+    //         languages = languages.sort( (a, b) => a.sort - b.sort );
+    //         return languages;
+    //       });
+    // }
+    // getSocials(): Promise<Social[]> {
+    //   return this.axios.get('/social/rows')
+    //       .then(array => {
+    //         let socials: Social[];
+    //         socials = array.map( data => {
+    //           let social = new Social(data.id);
+    //           social.tags = new Tags(data.tags);
+    //           social.url = data.url;
+    //           social.title = data.title;
+    //           if (data.icon) {
+    //             social.icon = data2model(data.icon.data);
+    //           }
+    //           return social;
+    //         });
+    //         socials = socials.sort( (a, b) => a.sort - b.sort );
+    //         return socials;
+    //       });
+    // }
+    data2entry(data) {
+        let entry = Procedures_1.data2model(data).copyInto(index_1.ExperienceEntry);
+        entry.text = data.text;
+        entry.date_range = data.date_range;
+        entry.location = data.location;
+        return entry;
+    }
 }
 exports.DirectusFetcher = DirectusFetcher;
 //# sourceMappingURL=DirectusFetcher.js.map
