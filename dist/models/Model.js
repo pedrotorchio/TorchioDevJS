@@ -9,7 +9,7 @@ class Model {
         this.meta = {};
         this.meta.id = id;
     }
-    copy(Type) {
+    copyInto(Type) {
         const model = this;
         let copy = new Type(model.meta.id);
         for (const metaName in model.meta) {

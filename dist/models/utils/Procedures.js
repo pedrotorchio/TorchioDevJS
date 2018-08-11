@@ -18,7 +18,7 @@ function data2model(data) {
 }
 exports.data2model = data2model;
 function data2image(data, baseUrl = "") {
-    let main_image = data2model(data).copy(index_1.Image);
+    let main_image = data2model(data).copyInto(index_1.Image);
     main_image.title = data.title;
     main_image.name = data.name;
     main_image.width = data.width;

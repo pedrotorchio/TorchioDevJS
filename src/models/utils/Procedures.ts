@@ -17,7 +17,7 @@ export function data2model(data): Model {
   return model;
 }
 export function data2image(data, baseUrl: string = ""): Image {
-  let main_image: Image = data2model(data).copy(Image);
+  let main_image: Image = data2model(data).copyInto(Image);
 
   main_image.title = data.title;
   main_image.name = data.name;

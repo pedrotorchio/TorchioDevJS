@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
-const joiner = require('url-join'); // preventing untyped module errors
+const joiner = require("url-join"); // preventing untyped module errors
 const Procedures_1 = require("../models/utils/Procedures");
 const index_1 = require("../index");
 class DirectusFetcher {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
-        this.apiUrl = '/api/1.1/tables';
+        this.apiUrl = "/api/1.1/tables";
         this.axios = axios_1.default.create({
             baseURL: joiner(baseUrl, this.apiUrl)
         });
         this.axios.interceptors.response.use(response => {
-            // takes response, 
-            // extracts data from axios wrapper, 
+            // takes response,
+            // extracts data from axios wrapper,
             // then data from directys wrapper
             let array = response.data.data;
             // then for each entry, extract default available Model fields
@@ -30,14 +30,15 @@ class DirectusFetcher {
         });
     }
     setAuthorizationHeader(token) {
-        this.axios.defaults.headers.common['Authorization'] = token;
+        this.axios.defaults.headers.common["Authorization"] = token;
         return this;
     }
     getAppInfo() {
-        return this.axios.get('/general/rows')
+        return this.axios
+            .get("/general/rows")
             .then(pres => pres[0])
             .then(([model, data]) => {
-            let app = model.copy(index_1.AppInfo);
+            let app = model.copyInto(index_1.AppInfo);
             if (data.main_image) {
                 app.main_image = Procedures_1.data2image(data.main_image.data, this.baseUrl);
             }
@@ -46,6 +47,21 @@ class DirectusFetcher {
             }
             app.title = data.main_title;
             app.contact_email = data.email_address;
+            return app;
+        });
+    }
+    getAbout() {
+        return this.axios
+            .get("/about/rows")
+            .then(pres => pres[0])
+            .then(([model, data]) => {
+            let about = model.copyInto(index_1.About);
+            if (info.avatar_image) {
+                app.avatar_image = Procedures_1.data2model(info.avatar_image.data);
+            }
+            app.tags = new index_1.Tags(info.tags);
+            app.cover_letter = info.bio;
+            app.description = info.description;
             return app;
         });
     }
