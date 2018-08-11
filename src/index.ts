@@ -46,14 +46,14 @@ export const VuePlugin = {
  * 5 call methods
  * 
  * let fetcher = new DirectusFetcher('http://api.torchiodev.com')
- *    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+ *    .setAuthorizationHeader('Bearer fdasfda')
  * let api = new Api(fetcher )
  *    .getAppInfo()
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
 
 // let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+//    .setAuthorizationHeader('Bearer fdsfasdf')
 // let api = new Api(fetcher );
 // api
 //    .getAppInfo()
