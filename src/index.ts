@@ -33,24 +33,9 @@ export const vuePlugin = {
   }
 };
 
-/**
- * Procedure:
- * 1 import Api
- * 2 create fetcher instance (provided or created)
- * 3 set authorization
- * 4 create api instance
- * 5 call methods
- *
- * let fetcher = new DirectusFetcher('http://api.torchiodev.com')
- *    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
- * let api = new Api(fetcher )
- *    .getAppInfo()
- *    .then(appinfo => console.dir(appinfo.main_image.srcset));
- */
-
 // let fetcher = new DirectusFetcher(
 //   "http://api.torchiodev.com"
-// ).setAuthorizationHeader("Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G");
+// ).setAuthorizationHeader("");
 // let api = new Api(fetcher);
 
 
