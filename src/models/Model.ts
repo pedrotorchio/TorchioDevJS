@@ -1,27 +1,29 @@
 import { Tags } from './Tags';
 
+export interface Metadata {
+  [key: string]: any;
+}
 export class Model{
   
-  sort: number = 0; // item order
-  tags: Tags = new Tags(); // meta tags
-  synonyms: Tags = new Tags();
-  description: string; // meta description
+  // sort: number = 0; // item order
+  // tags: Tags = new Tags(); // meta tags
+  // synonyms: Tags = new Tags();
+  // description: string; // meta description
 
-  constructor(public id:number|string) {}
+  meta: Metadata = {};
+
+  constructor(id:number|string) {
+    this.meta.id = id;
+  }
 
   copy <T extends Model>(Type: (id:number|string)=>void): T {
     const model = this;
     
-    let copy = new Type(model.id);
+    let copy = new Type(model.meta.id);
     
-    if (model.sort)
-      copy.sort =  model.sort;
-    if (model.tags)
-      copy.tags =  model.tags;
-    if (model.synonyms)
-      copy.synonyms =  model.synonyms;
-    if (model.description)
-      copy.description =  model.description;
+    for (const metaName in model.meta) {
+      copy.meta[metaName] = model.meta[metaName];
+    }
 
     return copy;
   }

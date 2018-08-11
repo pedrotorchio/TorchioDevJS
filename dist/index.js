@@ -15,6 +15,7 @@ __export(require("./models/Skill"));
 __export(require("./models/Language"));
 __export(require("./models/Education"));
 __export(require("./models/Social"));
+__export(require("./models/Model"));
 __export(require("./fetcher/DirectusFetcher"));
 __export(require("./Api"));
 const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");
@@ -45,12 +46,12 @@ exports.vuePlugin = {
  *    .getAppInfo()
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
-// let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
-// let api = new Api(fetcher );
-// api
-//    .getAppInfo()
-//    .then(data => console.dir(data));
+let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com');
+//  .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+let api = new Api_1.Api(fetcher);
+api
+    .getAppInfo();
+//  .then(data => console.dir(data));
 // api
 //    .getAbout()
 //    .then(data => console.dir(data));

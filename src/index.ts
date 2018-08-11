@@ -52,12 +52,12 @@ export const vuePlugin = {
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
 
-// let fetcher = new DirectusFetcher('http://api.torchiodev.com')
-//    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
-// let api = new Api(fetcher );
-// api
-//    .getAppInfo()
-//    .then(data => console.dir(data));
+let fetcher = new DirectusFetcher('http://api.torchiodev.com')
+  //  .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+let api = new Api( fetcher );
+api
+   .getAppInfo()
+  //  .then(data => console.dir(data));
 // api
 //    .getAbout()
 //    .then(data => console.dir(data));
