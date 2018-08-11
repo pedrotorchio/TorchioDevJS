@@ -1,4 +1,5 @@
 import * as Models from './index';
+import { IFetcher } from './IFetcher';
 import { 
   AppInfo,
   About, 
@@ -10,7 +11,6 @@ import {
   Language, 
   Social } from './index';
 export interface IApi{
-  
   getAppInfo(): Promise<AppInfo>;
   getAbout(): Promise<About>;
   getWorks(): Promise<Work[]>;
