@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
 const joiner = require('url-join'); // preventing untyped module errors
+const Procedures_1 = require("../models/utils/Procedures");
 const index_1 = require("../index");
 class DirectusFetcher {
     constructor(baseUrl) {
@@ -19,17 +20,7 @@ class DirectusFetcher {
             // id, sort, description, tags, synonyms
             let preExtracted = [];
             preExtracted = array.map(data => {
-                let model = new index_1.Model(data.id);
-                // which default primitive value meta to extract 
-                for (const metaName in ['sort', 'description']) {
-                    if (data[metaName])
-                        model.meta[metaName] = data[metaName];
-                }
-                // which default Tag instance meta to extract 
-                for (const tagName in ['tags', 'synonyms']) {
-                    if (data[tagName])
-                        model.meta[tagName] = new index_1.Tags(data[tagName]);
-                }
+                let model = Procedures_1.data2model(data);
                 return [model, data];
             });
             const [{ meta: { sort } }] = preExtracted[0];
@@ -38,24 +29,23 @@ class DirectusFetcher {
             return preExtracted;
         });
     }
-    // setAuthorizationHeader(token:string): IFetcher {
-    //   this.axios.defaults.headers.common['Authorization'] = token;
-    //   return this;
-    // }
+    setAuthorizationHeader(token) {
+        this.axios.defaults.headers.common['Authorization'] = token;
+        return this;
+    }
     getAppInfo() {
         return this.axios.get('/general/rows')
-            .then(models => models[0])
-            .then(model => {
+            .then(pres => pres[0])
+            .then(([model, data]) => {
             let app = model.copy(index_1.AppInfo);
-            if (app.main_image) {
-                app.main_image = this.data2image(model.main_image.data);
+            if (data.main_image) {
+                app.main_image = Procedures_1.data2image(data.main_image.data, this.baseUrl);
             }
-            if (app.logo) {
-                app.logo = this.data2image(model.logo.data);
+            if (data.logo) {
+                app.logo = Procedures_1.data2image(data.logo.data, this.baseUrl);
             }
-            console.log(model);
-            app.title = model.main_title;
-            app.contact_email = model.email_address;
+            app.title = data.main_title;
+            app.contact_email = data.email_address;
             return app;
         });
     }

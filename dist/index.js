@@ -46,12 +46,12 @@ exports.vuePlugin = {
  *    .getAppInfo()
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
-let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com');
-//  .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
+let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com')
+    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
 let api = new Api_1.Api(fetcher);
 api
-    .getAppInfo();
-//  .then(data => console.dir(data));
+    .getAppInfo()
+    .then(data => console.dir(data));
 // api
 //    .getAbout()
 //    .then(data => console.dir(data));

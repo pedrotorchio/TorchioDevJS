@@ -16,7 +16,7 @@ export class Model{
     this.meta.id = id;
   }
 
-  copy <T extends Model>(Type: (id:number|string)=>void): T {
+  copy <T extends Model>(Type: new (id:number|string) => T): T {
     const model = this;
     
     let copy = new Type(model.meta.id);
