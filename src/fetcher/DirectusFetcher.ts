@@ -79,6 +79,8 @@ export class DirectusFetcher implements IFetcher {
       .then(pres => pres[0])
       .then(([model, data]) => {
         let app: AppInfo = model.copyInto(AppInfo);
+        app.title = data.main_title;
+        app.contact_email = data.email_address;
 
         if (data.main_image) {
           app.main_image = data2image(data.main_image.data, this.baseUrl);
@@ -86,9 +88,6 @@ export class DirectusFetcher implements IFetcher {
         if (data.logo) {
           app.logo = data2image(data.logo.data, this.baseUrl);
         }
-
-        app.title = data.main_title;
-        app.contact_email = data.email_address;
 
         return app;
       });
@@ -99,16 +98,13 @@ export class DirectusFetcher implements IFetcher {
       .then(pres => pres[0])
       .then(([model, data]) => {
         let about: About = model.copyInto(About);
+        about.cover_letter = data.bio;
 
-        if (info.avatar_image) {
-          app.avatar_image = data2model(info.avatar_image.data);
+        if (data.avatar_image) {
+          about.avatar_image = data2image(data.avatar_image.data);
         }
 
-        app.tags = new Tags(info.tags);
-        app.cover_letter = info.bio;
-        app.description = info.description;
-
-        return app;
+        return about;
       });
   }
   // getWorks(): Promise<Work[]> {

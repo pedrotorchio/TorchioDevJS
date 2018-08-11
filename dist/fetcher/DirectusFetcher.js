@@ -39,14 +39,14 @@ class DirectusFetcher {
             .then(pres => pres[0])
             .then(([model, data]) => {
             let app = model.copyInto(index_1.AppInfo);
+            app.title = data.main_title;
+            app.contact_email = data.email_address;
             if (data.main_image) {
                 app.main_image = Procedures_1.data2image(data.main_image.data, this.baseUrl);
             }
             if (data.logo) {
                 app.logo = Procedures_1.data2image(data.logo.data, this.baseUrl);
             }
-            app.title = data.main_title;
-            app.contact_email = data.email_address;
             return app;
         });
     }
@@ -56,13 +56,11 @@ class DirectusFetcher {
             .then(pres => pres[0])
             .then(([model, data]) => {
             let about = model.copyInto(index_1.About);
-            if (info.avatar_image) {
-                app.avatar_image = Procedures_1.data2model(info.avatar_image.data);
+            about.cover_letter = data.bio;
+            if (data.avatar_image) {
+                about.avatar_image = Procedures_1.data2image(data.avatar_image.data);
             }
-            app.tags = new index_1.Tags(info.tags);
-            app.cover_letter = info.bio;
-            app.description = info.description;
-            return app;
+            return about;
         });
     }
 }
