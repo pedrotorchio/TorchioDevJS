@@ -81,6 +81,19 @@ class DirectusFetcher {
             return works;
         });
     }
+    getServices() {
+        return this.axios.get("/service/rows").then(array => {
+            let services;
+            services = array.map(([model, data]) => {
+                let service = model.copyInto(index_1.Service);
+                service.title = data.title;
+                service.header = data.bubble_header;
+                service.text = data.bubble_text;
+                return service;
+            });
+            return services;
+        });
+    }
 }
 exports.DirectusFetcher = DirectusFetcher;
 //# sourceMappingURL=DirectusFetcher.js.map
