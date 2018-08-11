@@ -14,7 +14,8 @@ import {
   Language, 
   Social,
   Image,
-  Tags
+  Tags,
+  Model
  } from '../index';
 
 
@@ -27,7 +28,38 @@ export class DirectusFetcher implements IFetcher{
     this.axios = axios.create({
       baseURL: joiner(baseUrl, this.apiUrl)
     });
-    this.axios.interceptors.response.use(response => response.data.data);
+    
+    this.axios.interceptors.response.use(response => {
+      // takes response, 
+      // extracts data from axios wrapper, 
+      // then data from directys wrapper
+      let array = response.data.data;
+      // then for each entry, extract default available Model fields
+      // id, sort, description, tags, synonyms
+      let models: Model[] = [];
+
+      models = array.map( ({id, sort, description, tags, synonyms}) => {
+            
+        let model = new Model(id);
+        
+        if (sort)
+          model.sort = sort;
+        if (description)
+          model.description = description;
+        if (tags)
+          model.tags = tags;
+        if (synonyms)
+          model.synonyms = synonyms;
+
+        return model;
+
+      });
+
+      if (models[0].sort !== undefined)
+        models = models.sort( (a, b) => a.sort - b.sort );
+      
+      return models;
+    });
   }
 
   setAuthorizationHeader(token:string): IFetcher {
