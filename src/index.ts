@@ -23,10 +23,10 @@ export const VuePlugin = {
 
     options.propertyName = options.propertyName || 'api';
 
-    if (!options.apiUrl)
+    if (!options.baseUrl)
       throw 'torchiodev api needs option apiUrl';
     
-    let fetcher = new DirectusFetcher(options.apiUrl);
+    let fetcher = new DirectusFetcher(options.baseUrl);
     if (options.authentication)
       fetcher.setAuthorizationHeader(options.authentication);
 
