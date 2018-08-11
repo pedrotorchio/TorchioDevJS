@@ -20,45 +20,16 @@ __export(require("./fetcher/DirectusFetcher"));
 __export(require("./Api"));
 const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");
 const Api_1 = require("./Api");
-exports.vuePlugin = {
+exports.VuePlugin = {
     install(Vue, options) {
-        options.propertyName = options.propertyName || "api";
-        if (!options.apiUrl)
-            throw "torchiodev api needs option apiUrl";
-        let fetcher = new DirectusFetcher_1.DirectusFetcher(options.apiUrl);
+        options.propertyName = options.propertyName || 'api';
+        if (!options.baseUrl)
+            throw 'torchiodev api needs option apiUrl';
+        let fetcher = new DirectusFetcher_1.DirectusFetcher(options.baseUrl);
         if (options.authentication)
-            fetcher.setAuthorizationHeader("Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G");
+            fetcher.setAuthorizationHeader(options.authentication);
         let api = new Api_1.Api(fetcher);
         Vue.prototype[`$${options.propertyName}`] = api;
     }
 };
-/**
- * Procedure:
- * 1 import Api
- * 2 create fetcher instance (provided or created)
- * 3 set authorization
- * 4 create api instance
- * 5 call methods
- *
- * let fetcher = new DirectusFetcher('http://api.torchiodev.com')
- *    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G')
- * let api = new Api(fetcher )
- *    .getAppInfo()
- *    .then(appinfo => console.dir(appinfo.main_image.srcset));
- */
-// let fetcher = new DirectusFetcher(
-//   "http://api.torchiodev.com"
-// ).setAuthorizationHeader("Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G");
-// let api = new Api(fetcher);
-// api.getAppInfo().then(data => console.dir(data));
-// api.getAbout().then(data => console.dir(data));
-// api.getWorks().then(data => console.dir(data));
-// api.getServices().then(data => console.dir(data));
-// api.getExperiences().then(data => console.dir(data));
-// api.getSkills().then(data => console.dir(data));
-// api
-//   .getEducations()
-//   .then(data => data.forEach(ed => console.dir(ed)));
-// api.getLanguages().then(data => console.dir(data));
-// api.getSocials().then(data => console.dir(data));
 //# sourceMappingURL=index.js.map

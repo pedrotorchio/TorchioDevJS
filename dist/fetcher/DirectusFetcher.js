@@ -8,9 +8,7 @@ class DirectusFetcher {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
         this.apiUrl = "/api/1.1/tables";
-        this.axios = axios_1.default.create({
-            baseURL: joiner(baseUrl, this.apiUrl)
-        });
+        this.setBaseUrl(baseUrl);
         this.axios.interceptors.response.use(response => {
             // takes response,
             // extracts data from axios wrapper,
@@ -28,6 +26,27 @@ class DirectusFetcher {
                 preExtracted = preExtracted.sort(([a], [b]) => a.meta.sort - b.meta.sort);
             return preExtracted;
         });
+    }
+    resetAxios() {
+        this.axios = axios_1.default.create({
+            baseURL: joiner(this.baseUrl, this.apiUrl)
+        });
+    }
+    setApiUrl(apiUrl) {
+        this.apiUrl = apiUrl;
+        this.resetAxios();
+        return this;
+    }
+    setBaseUrl(baseUrl) {
+        this.baseUrl = baseUrl;
+        this.resetAxios();
+        return this;
+    }
+    getApiUrl() {
+        return this.apiUrl;
+    }
+    getBaseUrl() {
+        return this.baseUrl;
     }
     setAuthorizationHeader(token) {
         this.axios.defaults.headers.common["Authorization"] = token;
@@ -101,7 +120,7 @@ class DirectusFetcher {
                 let experience = model.copyInto(index_1.Experience);
                 experience.title = data.title;
                 experience.entries = data.entries.data.map(this.data2entry);
-                experience.entries.sort((a, b) => a.meta.sort - b.meta.sort);
+                experience.entries.sort((a, b) => (a.meta.sort) - b.meta.sort);
                 return experience;
             });
             return experiences;

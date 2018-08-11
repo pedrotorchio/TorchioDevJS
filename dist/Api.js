@@ -4,6 +4,9 @@ class Api {
     constructor(fetcher) {
         this.fetcher = fetcher;
     }
+    getFetcher() {
+        return this.fetcher;
+    }
     getAppInfo() {
         return this.fetcher.getAppInfo();
     }
