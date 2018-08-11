@@ -9,9 +9,15 @@ import {
   Education, 
   Language, 
   Social } from './index';
-export class Api implements IApi{
-  constructor(private fetcher: IApi) {}
+import { IFetcher } from 'IFetcher';
 
+export class Api implements IApi{
+  constructor(private fetcher: IFetcher) {}
+
+  getFetcher():IFetcher {
+    return this.fetcher;
+  }
+  
   getAppInfo(): Promise<AppInfo> {
     return this.fetcher.getAppInfo();
   }
