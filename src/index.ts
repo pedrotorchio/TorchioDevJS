@@ -10,6 +10,7 @@ export * from './models/Skill';
 export * from './models/Language';
 export * from './models/Education';
 export * from './models/Social';
+export * from './models/Model';
 
 export * from './fetcher/DirectusFetcher';
 export * from './Api';
