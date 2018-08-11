@@ -63,6 +63,24 @@ class DirectusFetcher {
             return about;
         });
     }
+    getWorks() {
+        return this.axios.get("/work/rows").then(array => {
+            let works;
+            works = array.map(([model, data]) => {
+                let work = model.copyInto(index_1.Work);
+                work.title = data.title;
+                work.url = data.url;
+                work.date = data.date;
+                work.info = data.info;
+                work.color = data.suitable_color;
+                if (data.thumbnail) {
+                    work.thumbnail = Procedures_1.data2image(data.thumbnail.data);
+                }
+                return work;
+            });
+            return works;
+        });
+    }
 }
 exports.DirectusFetcher = DirectusFetcher;
 //# sourceMappingURL=DirectusFetcher.js.map

@@ -107,36 +107,27 @@ export class DirectusFetcher implements IFetcher {
         return about;
       });
   }
-  // getWorks(): Promise<Work[]> {
+  getWorks(): Promise<Work[]> {
+    return this.axios.get("/work/rows").then(array => {
+      let works: Work[];
 
-  //   return this.axios.get('/work/rows')
-  //       .then(array => {
-  //         let works: Work[];
+      works = array.map(([model, data]) => {
+        let work = model.copyInto(Work);
+        work.title = data.title;
+        work.url = data.url;
+        work.date = data.date;
+        work.info = data.info;
+        work.color = data.suitable_color;
 
-  //         works = array.map( data => {
+        if (data.thumbnail) {
+          work.thumbnail = data2image(data.thumbnail.data);
+        }
+        return work;
+      });
 
-  //           let work = new Work(data.id);
-
-  //           if (data.thumbnail) {
-  //             work.thumbnail = data2model(data.thumbnail.data);
-  //           }
-
-  //           work.title = data.title;
-  //           work.url = data.url;
-  //           work.date = data.date;
-  //           work.info = data.info;
-  //           work.color = data.suitable_color;
-  //           work.tags = new Tags(data.tags);
-  //           work.sort = data.sort;
-
-  //           return work;
-  //         });
-  //         works = works.sort( (a, b) => a.sort - b.sort );
-
-  //         return works;
-
-  //       });
-  // }
+      return works;
+    });
+  }
   // getServices(): Promise<Service[]> {
 
   //   return this.axios.get('/service/rows')
