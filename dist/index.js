@@ -22,12 +22,12 @@ const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");
 const Api_1 = require("./Api");
 exports.vuePlugin = {
     install(Vue, options) {
-        options.propertyName = options.propertyName || 'api';
+        options.propertyName = options.propertyName || "api";
         if (!options.apiUrl)
-            throw 'torchiodev api needs option apiUrl';
+            throw "torchiodev api needs option apiUrl";
         let fetcher = new DirectusFetcher_1.DirectusFetcher(options.apiUrl);
         if (options.authentication)
-            fetcher.setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
+            fetcher.setAuthorizationHeader("Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G");
         let api = new Api_1.Api(fetcher);
         Vue.prototype[`$${options.propertyName}`] = api;
     }
@@ -46,34 +46,19 @@ exports.vuePlugin = {
  *    .getAppInfo()
  *    .then(appinfo => console.dir(appinfo.main_image.srcset));
  */
-let fetcher = new DirectusFetcher_1.DirectusFetcher('http://api.torchiodev.com')
-    .setAuthorizationHeader('Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G');
-let api = new Api_1.Api(fetcher);
-api
-    .getAppInfo()
-    .then(data => console.dir(data));
+// let fetcher = new DirectusFetcher(
+//   "http://api.torchiodev.com"
+// ).setAuthorizationHeader("Bearer 9gLLRfyNxBtQV392IVU4aUiPDNYsG20G");
+// let api = new Api(fetcher);
+// api.getAppInfo().then(data => console.dir(data));
+// api.getAbout().then(data => console.dir(data));
+// api.getWorks().then(data => console.dir(data));
+// api.getServices().then(data => console.dir(data));
+// api.getExperiences().then(data => console.dir(data));
+// api.getSkills().then(data => console.dir(data));
 // api
-//    .getAbout()
-//    .then(data => console.dir(data));
-// api
-//    .getWorks()
-//    .then(data => console.dir(data));
-// api
-//    .getServices()
-//    .then(data => console.dir(data));
-// api
-//    .getExperiences()
-//    .then(data => console.dir(data));
-// api
-//    .getSkills()
-//    .then(data => console.dir(data));
-// api
-//    .getEducations()
-//    .then(data => data.forEach( ed => console.log(ed.logo.srcset)));
-// api
-//    .getLanguages()
-//    .then(data => console.log(data));
-// api
-//    .getSocials()
-//    .then(data => console.log(data));
+//   .getEducations()
+//   .then(data => data.forEach(ed => console.dir(ed)));
+// api.getLanguages().then(data => console.dir(data));
+// api.getSocials().then(data => console.dir(data));
 //# sourceMappingURL=index.js.map
