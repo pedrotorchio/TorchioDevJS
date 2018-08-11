@@ -2,6 +2,8 @@ import axios from 'axios';
 const joiner: any = require('url-join'); // preventing untyped module errors
 
 import { IFetcher } from '../IFetcher';
+import { data2image, data2model } from '../models/utils/Procedures';
+
 import { 
   AppInfo,
   About, 
@@ -40,17 +42,7 @@ export class DirectusFetcher implements IFetcher{
       
       preExtracted = array.map( data => {
         
-        let model = new Model(data.id);
-        // which default primitive value meta to extract 
-        for (const metaName in ['sort', 'description']) {
-          if (data[metaName])
-            model.meta[metaName] = data[metaName];
-        }
-        // which default Tag instance meta to extract 
-        for (const tagName in ['tags', 'synonyms']) {
-          if (data[tagName])
-            model.meta[tagName] = new Tags(data[tagName]);
-        }
+        let model:Model = data2model(data);
         
         return [model, data];
       });
@@ -63,30 +55,29 @@ export class DirectusFetcher implements IFetcher{
     });
   }
 
-  // setAuthorizationHeader(token:string): IFetcher {
-  //   this.axios.defaults.headers.common['Authorization'] = token;
-  //   return this;
-  // }
+  setAuthorizationHeader(token:string): IFetcher {
+    this.axios.defaults.headers.common['Authorization'] = token;
+    return this;
+  }
   getAppInfo(): Promise<AppInfo> {
     
     return this.axios.get('/general/rows')        
-        .then(models => models[0])
-        .then(model => {
+        .then(pres => pres[0])
+        .then(([model, data]) => {
 
           let app:AppInfo = model.copy(AppInfo);
-            
-          if (app.main_image) {
-            app.main_image = this.data2image(model.main_image.data);
+          
+          if (data.main_image) {
+            app.main_image = data2image(data.main_image.data, this.baseUrl);
           }
-          if (app.logo) {
-            app.logo = this.data2image(model.logo.data);
+          if (data.logo) {
+            app.logo = data2image(data.logo.data, this.baseUrl);
           }
-          console.log(model);
-          app.title = model.main_title;
-          app.contact_email = model.email_address;
+          
+          app.title = data.main_title;
+          app.contact_email = data.email_address;
           
           return app;
-        
         });
     
   }
@@ -99,7 +90,7 @@ export class DirectusFetcher implements IFetcher{
   //         let app = new About(info.id);
             
   //         if (info.avatar_image) {
-  //           app.avatar_image = this.data2image(info.avatar_image.data);
+  //           app.avatar_image = data2model(info.avatar_image.data);
   //         }
           
   //         app.tags = new Tags(info.tags);
@@ -121,7 +112,7 @@ export class DirectusFetcher implements IFetcher{
   //           let work = new Work(data.id);
             
   //           if (data.thumbnail) {
-  //             work.thumbnail = this.data2image(data.thumbnail.data);
+  //             work.thumbnail = data2model(data.thumbnail.data);
   //           }
             
   //           work.title = data.title;
@@ -231,7 +222,7 @@ export class DirectusFetcher implements IFetcher{
   //           education.text = data.text;
             
   //           if (data.logo) {
-  //             education.logo = this.data2image(data.logo.data);
+  //             education.logo = data2model(data.logo.data);
   //           }
 
   //           return education;
@@ -281,7 +272,7 @@ export class DirectusFetcher implements IFetcher{
   //           social.title = data.title;
 
   //           if (data.icon) {
-  //             social.icon = this.data2image(data.icon.data);
+  //             social.icon = data2model(data.icon.data);
   //           }
 
   //           return social;
@@ -292,38 +283,6 @@ export class DirectusFetcher implements IFetcher{
         
   //       });
     
-  // }
-
-
-  // data2image(data):Image {
-  
-      
-  //   let main_image = new Image(data.id);
-  //       main_image.title = data.title;
-  //       main_image.name = data.name;
-  //       main_image.description = data.caption;
-  //       main_image.width = data.width;
-  //       main_image.height = data.height;
-  //       main_image.main_url = joiner(this.baseUrl, data.url);
-  //       main_image.tags = new Tags(data.tags);
-
-  //       [160, 240, 320, 480, 640, 800, 960, 1080, 1240, 1440, 1600].forEach(size => main_image.addSource({
-  //         url: joiner(this.baseUrl, 'thumbnail', `${size}/${size}/contain`, data.name),
-  //         size: ['width', size]
-  //       }));
-        
-  //   return main_image;
-  // }
-  // data2entry(data):ExperienceEntry {
-
-
-  //   let entry = new ExperienceEntry(data.id);
-  //       entry.text = data.text
-  //       entry.date_range = data.date_range;
-  //       entry.location = data.location;
-  //       entry.sort = data.sort;
-
-  //   return entry;
   // }
   
 }
