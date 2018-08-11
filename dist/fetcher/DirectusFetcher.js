@@ -107,23 +107,19 @@ class DirectusFetcher {
             return experiences;
         });
     }
-    // getSkills(): Promise<Skill[]> {
-    //   return this.axios.get('/skill/rows')
-    //       .then(array => {
-    //         let skills: Skill[];
-    //         skills = array.map( data => {
-    //           let skill = new Skill(data.id);
-    //           skill.tags = new Tags(data.tags);
-    //           skill.sort = data.sort;
-    //           skill.title = data.title;
-    //           skill.text = data.text;
-    //           skill.level = data.level;
-    //           return skill;
-    //         });
-    //         skills = skills.sort( (a, b) => a.level - b.level );
-    //         return skills;
-    //       });
-    // }
+    getSkills() {
+        return this.axios.get("/skill/rows").then(array => {
+            let skills;
+            skills = array.map(([model, data]) => {
+                let skill = model.copyInto(index_1.Skill);
+                skill.title = data.title;
+                skill.text = data.text;
+                skill.level = data.level;
+                return skill;
+            });
+            return skills;
+        });
+    }
     // getEducations(): Promise<Education[]> {
     //   return this.axios.get('/education/rows')
     //       .then(array => {
