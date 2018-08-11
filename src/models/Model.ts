@@ -9,7 +9,7 @@ export class Model{
 
   constructor(public id:number|string) {}
 
-  copy <T extends Model>(Type:new (id:number|string)=>T): T {
+  copy <T extends Model>(Type: (id:number|string)=>void): T {
     const model = this;
     
     let copy = new Type(model.id);
