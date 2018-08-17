@@ -1,4 +1,4 @@
-import { Model, Image, Tags } from "js-models-helper/src";
+import { Model, Image, Tags } from "js-models-helper";
 
 const joiner: any = require("url-join"); // preventing untyped module errors
 
