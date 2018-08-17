@@ -77,7 +77,7 @@ class DirectusFetcher {
             let about = model.copyInto(index_1.About);
             about.cover_letter = data.bio;
             if (data.avatar_image) {
-                about.avatar_image = Procedures_1.data2image(data.avatar_image.data);
+                about.avatar_image = Procedures_1.data2image(data.avatar_image.data, this.baseUrl);
             }
             return about;
         });
@@ -93,7 +93,7 @@ class DirectusFetcher {
                 work.info = data.info;
                 work.color = data.suitable_color;
                 if (data.thumbnail) {
-                    work.thumbnail = Procedures_1.data2image(data.thumbnail.data);
+                    work.thumbnail = Procedures_1.data2image(data.thumbnail.data, this.baseUrl);
                 }
                 return work;
             });
@@ -147,7 +147,7 @@ class DirectusFetcher {
                 education.title = data.title;
                 education.text = data.text;
                 if (data.logo) {
-                    education.logo = Procedures_1.data2image(data.logo.data);
+                    education.logo = Procedures_1.data2image(data.logo.data, this.baseUrl);
                 }
                 return education;
             });
@@ -174,7 +174,7 @@ class DirectusFetcher {
                 social.url = data.url;
                 social.title = data.title;
                 if (data.icon) {
-                    social.icon = Procedures_1.data2image(data.icon.data);
+                    social.icon = Procedures_1.data2image(data.icon.data, this.baseUrl);
                 }
                 return social;
             });

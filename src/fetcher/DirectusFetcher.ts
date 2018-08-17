@@ -109,7 +109,7 @@ export class DirectusFetcher implements IFetcher {
                about.cover_letter = data.bio;
 
                if (data.avatar_image) {
-                 about.avatar_image = data2image(data.avatar_image.data);
+                 about.avatar_image = data2image(data.avatar_image.data, this.baseUrl);
                }
 
                return about;
@@ -128,7 +128,7 @@ export class DirectusFetcher implements IFetcher {
                work.color = data.suitable_color;
 
                if (data.thumbnail) {
-                 work.thumbnail = data2image(data.thumbnail.data);
+                 work.thumbnail = data2image(data.thumbnail.data, this.baseUrl);
                }
                return work;
              });
@@ -197,7 +197,7 @@ export class DirectusFetcher implements IFetcher {
                education.text = data.text;
 
                if (data.logo) {
-                 education.logo = data2image(data.logo.data);
+                 education.logo = data2image(data.logo.data, this.baseUrl);
                }
 
                return education;
@@ -231,7 +231,7 @@ export class DirectusFetcher implements IFetcher {
                social.title = data.title;
 
                if (data.icon) {
-                 social.icon = data2image(data.icon.data);
+                 social.icon = data2image(data.icon.data, this.baseUrl);
                }
 
                return social;
