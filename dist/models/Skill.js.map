@@ -1,1 +1,1 @@
-{"version":3,"file":"Skill.js","sourceRoot":"","sources":["../../src/models/Skill.ts"],"names":[],"mappings":";;AAAA,8CAA8C;AAE9C,MAAa,KAAM,SAAQ,WAAK;IAK9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,sBAQC"}
+{"version":3,"file":"Skill.js","sourceRoot":"","sources":["../../src/models/Skill.ts"],"names":[],"mappings":";;AAAA,uDAA0C;AAE1C,MAAa,KAAM,SAAQ,wBAAK;IAK9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,sBAQC"}

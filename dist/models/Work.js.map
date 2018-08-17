@@ -1,1 +1,1 @@
-{"version":3,"file":"Work.js","sourceRoot":"","sources":["../../src/models/Work.ts"],"names":[],"mappings":";;AACA,8CAA8C;AAE9C,MAAa,IAAM,SAAQ,WAAK;IAQ9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AAXD,oBAWC"}
+{"version":3,"file":"Work.js","sourceRoot":"","sources":["../../src/models/Work.ts"],"names":[],"mappings":";;AACA,uDAA0C;AAE1C,MAAa,IAAM,SAAQ,wBAAK;IAQ9B,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AAXD,oBAWC"}

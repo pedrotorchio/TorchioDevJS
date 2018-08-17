@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const src_1 = require("js-models-helper/src");
-class Language extends src_1.Model {
+const js_models_helper_1 = require("js-models-helper");
+class Language extends js_models_helper_1.Model {
     constructor(id) {
         super(id);
     }

@@ -1,4 +1,4 @@
-import { Model } from 'js-models-helper/src';
+import { Model } from 'js-models-helper';
 export declare class Skill extends Model {
     title: string;
     text: string;
