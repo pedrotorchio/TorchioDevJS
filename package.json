@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "axios": "^0.18.0",
-    "js-models-helper": "^1.0.1",
+    "js-models-helper": "^1.0.4",
     "url-join": "^4.0.0"
   },
   "devDependencies": {
