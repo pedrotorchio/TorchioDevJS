@@ -1,5 +1,5 @@
-import { Image } from  'js-models-helper/src';
-import { Model } from  'js-models-helper/src';
+import { Image } from  'js-models-helper';
+import { Model } from  'js-models-helper';
 
 export class AppInfo extends Model {
   title: string;

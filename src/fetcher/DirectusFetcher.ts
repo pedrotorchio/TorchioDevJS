@@ -21,7 +21,7 @@ import {
   Model,
   Tags,
   Image
-} from 'js-models-helper/src';
+} from 'js-models-helper';
 
 export class DirectusFetcher implements IFetcher {
          private axios;

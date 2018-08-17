@@ -1,4 +1,4 @@
-import { Model } from  'js-models-helper/src';
+import { Model } from  'js-models-helper';
 
 export class ExperienceEntry extends Model {
   text: string;
