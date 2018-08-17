@@ -50,6 +50,12 @@ let api = new Api(fetcher )
   main_image: Image;
   logo: Image;
 ```
+#### About
+```typescript
+  avatar_image: Image;
+  cover_letter: string;
+```
+
 
 ### Vue plugin 
 1. import property 'vuePlugin' as torchioapi
