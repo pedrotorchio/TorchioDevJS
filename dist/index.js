@@ -3,8 +3,6 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(require("./models/Image"));
-__export(require("./models/Tags"));
 __export(require("./models/AppInfo"));
 __export(require("./models/About"));
 __export(require("./models/Work"));
@@ -15,7 +13,6 @@ __export(require("./models/Skill"));
 __export(require("./models/Language"));
 __export(require("./models/Education"));
 __export(require("./models/Social"));
-__export(require("./models/Model"));
 __export(require("./fetcher/DirectusFetcher"));
 __export(require("./Api"));
 const DirectusFetcher_1 = require("./fetcher/DirectusFetcher");

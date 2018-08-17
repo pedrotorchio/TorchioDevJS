@@ -1,4 +1,4 @@
-import { Model } from './Model';
+import { Model } from  'js-models-helper/src';
 
 export class Language extends Model {
   title: string;

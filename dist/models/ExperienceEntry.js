@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Model_1 = require("./Model");
-class ExperienceEntry extends Model_1.Model {
+const src_1 = require("js-models-helper/src");
+class ExperienceEntry extends src_1.Model {
     constructor(id) {
         super(id);
     }

@@ -1,5 +1,4 @@
-import { Tags } from  './Tags';
-import { Model } from './Model';
+import { Model } from  'js-models-helper/src';
 
 export class Service extends Model {
   title: string;

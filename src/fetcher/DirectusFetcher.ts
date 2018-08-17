@@ -14,11 +14,14 @@ import {
   Skill,
   Education,
   Language,
-  Social,
-  Image,
-  Tags,
-  Model
+  Social
 } from "../index";
+
+import {
+  Model,
+  Tags,
+  Image
+} from 'js-models-helper/src';
 
 export class DirectusFetcher implements IFetcher {
          private axios;

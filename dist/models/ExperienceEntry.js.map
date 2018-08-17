@@ -1,1 +1,1 @@
-{"version":3,"file":"ExperienceEntry.js","sourceRoot":"","sources":["../../src/models/ExperienceEntry.ts"],"names":[],"mappings":";;AAAA,mCAAgC;AAEhC,MAAa,eAAgB,SAAQ,aAAK;IAKxC,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,0CAQC"}
+{"version":3,"file":"ExperienceEntry.js","sourceRoot":"","sources":["../../src/models/ExperienceEntry.ts"],"names":[],"mappings":";;AAAA,8CAA8C;AAE9C,MAAa,eAAgB,SAAQ,WAAK;IAKxC,YAAY,EAAgB;QAC1B,KAAK,CAAC,EAAE,CAAC,CAAC;IACZ,CAAC;CACF;AARD,0CAQC"}

@@ -1,5 +1,5 @@
-import { Image } from  './Image';
-import { Model } from './Model';
+import { Image } from  'js-models-helper/src';
+import { Model } from  'js-models-helper/src';
 
 export class About extends Model {
   avatar_image: Image;

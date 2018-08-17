@@ -1,5 +1,5 @@
-import { Model } from './Model';
-import { Image } from './Image';
+import { Model } from  'js-models-helper/src';
+import { Image } from 'js-models-helper/src';
 
 export class Social extends Model {
   title: string;
