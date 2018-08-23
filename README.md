@@ -55,7 +55,15 @@ let api = new Api(fetcher )
   avatar_image: Image;
   cover_letter: string;
 ```
-
+### Work
+```typescript
+  title: string;
+  url: string;
+  date: string;
+  info: string;
+  thumbnail: Image;
+  color: string;
+```
 
 ### Vue plugin 
 1. import property 'vuePlugin' as torchioapi
