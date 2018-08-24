@@ -4,16 +4,17 @@ const joiner: any = require("url-join"); // preventing untyped module errors
 
 export function data2model(data): Model {
   let model = new Model(data.id);
-
+  
   // which default primitive value meta to extract
   for (const metaName of ["sort", "description"]) {
-    if (data[metaName]) model.meta[metaName] = data[metaName];
+    if (data[metaName] !== undefined) model.meta[metaName] = data[metaName];
   }
+  console.log(model);
   // which default Tag instance meta to extract
   for (const tagName of ["tags", "synonyms"]) {
-    if (data[tagName]) model.meta[tagName] = new Tags(data[tagName]);
+    if (data[tagName] !== undefined) model.meta[tagName] = new Tags(data[tagName]);
   }
-
+  
   return model;
 }
 export function data2image(data, baseUrl: string = ""): Image {

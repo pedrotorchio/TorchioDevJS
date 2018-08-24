@@ -6,12 +6,13 @@ function data2model(data) {
     let model = new js_models_helper_1.Model(data.id);
     // which default primitive value meta to extract
     for (const metaName of ["sort", "description"]) {
-        if (data[metaName])
+        if (data[metaName] !== undefined)
             model.meta[metaName] = data[metaName];
     }
+    console.log(model);
     // which default Tag instance meta to extract
     for (const tagName of ["tags", "synonyms"]) {
-        if (data[tagName])
+        if (data[tagName] !== undefined)
             model.meta[tagName] = new js_models_helper_1.Tags(data[tagName]);
     }
     return model;
